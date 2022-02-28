@@ -1,4 +1,4 @@
-<?php include_once ABSPATH . 'wp-content/plugins/tudoclassificados/pages/anuncio_unico/produtos/assets/php/db_comentarios.php'; ?>
+<?php include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/anuncio_unico/produtos/assets/php/db_comentarios.php'; ?>
 <?php if (is_user_logged_in()) { ?>
     <div class="w-100">
         <h5>Pergunte ao vendedor</h5>

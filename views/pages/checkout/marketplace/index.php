@@ -179,7 +179,7 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <?php require_once ABSPATH . 'wp-content/plugins/tudoclassificados/src/Integracoes/MercadoPago/checkout-marktplace.php'; ?>
+                        <?php require_once TUDOCLASSIFICADOS_PATH . 'app/src/Integracoes/MercadoPago/checkout-marktplace.php'; ?>
                     </div>
                 </div>
             </div>

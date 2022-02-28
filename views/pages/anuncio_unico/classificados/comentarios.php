@@ -1,6 +1,6 @@
 <div class="card p-3 mb-3">
     <?php if (is_user_logged_in()) : ?>
-        <?php include_once ABSPATH . 'wp-content/plugins/tudoclassificados/pages/anuncio_unico/produtos/assets/php/db_comentarios.php'; ?>
+        <?php include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/anuncio_unico/produtos/assets/php/db_comentarios.php'; ?>
         <div class="w-100">
             <h5>Pergunte ao vendedor</h5>
             <small class="text-muted w-100">Não é permitido enviar infomaçoes pessoais ou links externos.</small>

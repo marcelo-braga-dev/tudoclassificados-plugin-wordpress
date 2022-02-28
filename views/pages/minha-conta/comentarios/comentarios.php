@@ -1,6 +1,6 @@
 <?php
 global $wpdb;
-include_once ABSPATH . 'wp-content/plugins/tudoclassificados/pages/minha-conta/assets/php/db_comentarios.php';
+include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/minha-conta/assets/php/db_comentarios.php';
 
 $table = 'class_imp_comentarios';
 $user_id = get_current_user_id();

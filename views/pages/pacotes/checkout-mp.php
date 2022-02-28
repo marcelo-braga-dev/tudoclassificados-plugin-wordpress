@@ -1,6 +1,6 @@
 <?php
 
-include_once ABSPATH . 'wp-content/plugins/tudoclassificados/pages/pacotes/src/MercadoPago.php';
+include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/pacotes/src/MercadoPago.php';
 include_once 'src/AlterarPremium.php';
 
 ?>

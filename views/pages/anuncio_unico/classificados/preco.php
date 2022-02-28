@@ -2,9 +2,9 @@
 $tipo = $post_meta['tipo'][0];
 
 if ($tipo == 'filiado') :
-   include ABSPATH . 'wp-content/plugins/tudoclassificados/pages/anuncio_unico/area-precos/filiado.php';
+   include TUDOCLASSIFICADOS_PATH . 'views/pages/anuncio_unico/area-precos/filiado.php';
 elseif ($tipo == 'marketplace') :
-   include ABSPATH . 'wp-content/plugins/tudoclassificados/pages/anuncio_unico/area-precos/marketplace.php';
+   include TUDOCLASSIFICADOS_PATH . 'views/pages/anuncio_unico/area-precos/marketplace.php';
 else :
    function MontarLink($texto)
    {
@@ -149,7 +149,7 @@ else :
          <!-- Checkout Pro -->
          <?php
          if ($category->parent != get_id_categoria_imoveis()) :
-            require_once ABSPATH . 'wp-content/plugins/tudoclassificados/src/Integracoes/MercadoPago/checkout-marktplace.php';
+            require_once TUDOCLASSIFICADOS_PATH . 'app/src/Integracoes/MercadoPago/checkout-marktplace.php';
          endif; ?>
 
       <?php endif ?>

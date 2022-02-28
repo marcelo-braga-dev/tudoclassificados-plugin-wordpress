@@ -9,4 +9,4 @@
  * @package Advanced_Classifieds_And_Directory_Pro
  */
 
-require_once ABSPATH . 'wp-content/plugins/tudoclassificados/views/widgets/anuncios_lateral.php';
+require_once TUDOCLASSIFICADOS_PATH  . 'views/widgets/anuncios_lateral.php';

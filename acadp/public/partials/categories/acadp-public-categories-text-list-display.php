@@ -8,7 +8,8 @@
  *
  * @package Advanced_Classifieds_And_Directory_Pro
  */
-include_once ABSPATH . 'wp-content/plugins/tudoclassificados/pages/categorias/todas_categorias.php';
+
+include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/categorias/todas_categorias.php';
 return;
 ?>
 
