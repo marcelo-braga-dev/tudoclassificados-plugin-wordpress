@@ -2,7 +2,7 @@
 
 namespace TudoClassificados\App\Services\Pages\MinhaConta\Imoveis;
 
-use TudoClassificados\App\Integracoes\Ingaia\Ingaia;
+use TudoClassificados\App\src\Integracoes\Ingaia\Ingaia;
 
 class ImoveisService
 {

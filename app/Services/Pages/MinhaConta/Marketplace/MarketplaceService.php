@@ -2,7 +2,7 @@
 
 namespace TudoClassificados\App\Services\Pages\MinhaConta\Marketplace;
 
-use TudoClassificados\App\Integracoes\Bling\Bling;
+use TudoClassificados\App\src\Integracoes\Bling\Bling;
 
 class MarketplaceService
 {

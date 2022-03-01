@@ -79,7 +79,7 @@ class ListaImoveis
         // Process output
         if ($acadp_query->have_posts()) {
             ob_start();
-            require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/lista-anuncios/index.php';
+            require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/imoveis/index/index.php';
             return ob_get_clean();
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_GET['frete'])) {
     $frete = explode(';', $_GET['frete']);
 
@@ -50,7 +51,7 @@ if (!empty($_GET['frete'])) {
                 FRETE GRÁTIS
             </div>
         </div>
-        <?php else :
+    <?php else :
 
         $cep_anunciante = get_user_meta($post->post_author)['cep'][0];
 
@@ -61,7 +62,7 @@ if (!empty($_GET['frete'])) {
             !empty($post_meta['altura'][0]) &&
             !empty($post_meta['largura'][0])
         ) :
-        ?>
+            ?>
 
             <div class="row mb-3">
                 <div class="col-auto align-self-end">
@@ -84,21 +85,21 @@ if (!empty($_GET['frete'])) {
             </div>
 
             <?php if ($fretePreco) : ?>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <?php
-                        $preco = str_replace(',', '.', $price);
-                        $frete = str_replace(',', '.', $fretePreco);
-                        $precoFinal = str_replace('.', ',', $preco + $frete);
-                        ?>
-                        <small>Frete: <b>RS <?= $fretePreco ?></b></small>
-                    </div>
-                    <div class="col-12">
-                        <small>Preço Final: </small>
-                        <span><b>R$ <?= $precoFinal ?></b></span>
-                    </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <?php
+                    $preco = str_replace(',', '.', $price);
+                    $frete = str_replace(',', '.', $fretePreco);
+                    $precoFinal = str_replace('.', ',', $preco + $frete);
+                    ?>
+                    <small>Frete: <b>RS <?= $fretePreco ?></b></small>
                 </div>
-            <?php endif ?>
+                <div class="col-12">
+                    <small>Preço Final: </small>
+                    <span><b>R$ <?= $precoFinal ?></b></span>
+                </div>
+            </div>
+        <?php endif ?>
 
         <?php endif ?>
 
@@ -113,7 +114,7 @@ if (!empty($_GET['frete'])) {
         </button>
 
     <?php else : ?>
-        <form action="/checkout-marketplace-mercadopago" class="mb-0">
+        <form action="/anuncios/marketplace/checkout-mercado-pago/" class="mb-0">
             <div class="row">
                 <div class="col-12">
                     <input type="hidden" name="id" value="<?= $post->ID ?>">
@@ -135,9 +136,3 @@ if (!empty($_GET['frete'])) {
         </small>
     </div>
 </div>
-
-<script>
-    function alertCep(e) {
-        $('#alert-cep').show();
-    }
-</script>

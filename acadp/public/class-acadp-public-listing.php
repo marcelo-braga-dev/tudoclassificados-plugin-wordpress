@@ -47,7 +47,7 @@ class ACADP_Public_Listing
      */
     public function the_content($content)
     {
-        $service = new TudoClassificados\App\src\Shortcodes\Anuncios\AnuncioUnico();
+        $service = new TudoClassificados\App\Views\Pages\AnuncioUnico();
         return $service->execute($content);
     }
 

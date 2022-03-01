@@ -13,14 +13,14 @@ $item->quantity = 1;
 $item->currency_id = "BRL";
 $item->unit_price = $preco;
 
-if (!empty($_GET['frete_valor']))
-{    
-    $precoFrete = str_replace(',', '.', $_GET['frete_valor']);
-
-    $shipments->cost = floatval($precoFrete);
-    $shipments->mode = $_GET['frete_tipo'];
-    $preference->shipments = $shipments;
-}
+// if (!empty($_GET['frete_valor']))
+// {
+//     $precoFrete = str_replace(',', '.', $_GET['frete_valor']);
+//
+//     $shipments->cost = floatval($precoFrete);
+//     $shipments->mode = $_GET['frete_tipo'];
+//     $preference->shipments = $shipments;
+// }
 
 $payer = new MercadoPago\Payer();
 

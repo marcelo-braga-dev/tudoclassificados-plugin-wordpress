@@ -1,4 +1,5 @@
 <?php
+
 new \TudoClassificados\App\src\Shortcodes\Paginas();
 new \TudoClassificados\App\src\Shortcodes\Anuncios\CardGerenciarAnuncio();
 new \TudoClassificados\App\src\Shortcodes\Widgets();

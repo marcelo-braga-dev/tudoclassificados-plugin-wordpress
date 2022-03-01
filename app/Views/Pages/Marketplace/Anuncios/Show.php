@@ -1,12 +1,13 @@
 <?php
 
-namespace TudoClassificados\App\src\Shortcodes\Anuncios\Marketplaces\Templates;
+namespace TudoClassificados\App\Views\Pages\Marketplace\Anuncios;
 
+use TudoClassificados\App\Views\Components\AnuncioUnico\ImagemPrincipal;
 use WP_Query;
 
-class AnuncioUnicoMarketplace
+class Show
 {
-    public function execute($post, $content)
+    public function index($post, $content)
     {
         acadp_update_listing_views_count($post->ID);
 
@@ -57,14 +58,6 @@ class AnuncioUnicoMarketplace
             $has_category = true;
         }
 
-        // $can_show_images
-        $has_images = empty($general_settings['has_images']) ? false : true;
-        $can_show_images = false;
-
-        if ($has_images) {
-            $can_show_images = isset($post_meta['images']) ? true : false;
-        }
-
         // $can_show_video
         $has_video = empty($general_settings['has_video']) ? false : true;
         $can_show_video = false;
@@ -79,19 +72,6 @@ class AnuncioUnicoMarketplace
 
         // $can_show_map
         $has_map = !empty($general_settings['has_map']) && empty($post_meta['hide_map'][0]) ? true : false;
-        $can_show_map = false;
-
-        if ($can_show_location && $has_map) {
-            $can_show_map = !empty($post_meta['latitude'][0]) && !empty($post_meta['longitude'][0]) ? true : false;
-        }
-
-        // $can_show_price
-        $has_price = empty($general_settings['has_price']) ? false : true;
-        $can_show_price = false;
-
-        if ($has_price && isset($post_meta['price']) && $post_meta['price'][0] > 0) {
-            $can_show_price = true;
-        }
 
         // Get custom fields
         $fields = array();
@@ -123,9 +103,11 @@ class AnuncioUnicoMarketplace
             }
         }
 
+        $imagensPrincipal = new ImagemPrincipal();
+
         // Process output
         ob_start();
-        include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/anuncio_unico/classificados/index.php';
+        include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/marketplace/show/index.php';
         return ob_get_clean();
     }
 }

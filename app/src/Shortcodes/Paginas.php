@@ -16,5 +16,9 @@ class Paginas
                 require_once TUDOCLASSIFICADOS_PATH . 'app/Services/Pages/MinhaConta/index.php';
             }
         }
+
+        if ($atts['pagina'] == 'checkout-marketplace-mercadopago') {
+            include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/checkout/marketplace/index.php';
+        }
     }
 }

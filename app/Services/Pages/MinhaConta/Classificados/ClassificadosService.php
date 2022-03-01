@@ -2,8 +2,8 @@
 
 namespace TudoClassificados\App\Services\Pages\MinhaConta\Classificados;
 
-use TudoClassificados\App\Integracoes\Bling\CadastrarProdutoBling;
-use TudoClassificados\App\Integracoes\Bling\Requisicao;
+use TudoClassificados\App\src\Integracoes\Bling\CadastrarProdutoBling;
+use TudoClassificados\App\src\Integracoes\Bling\Requisicao;
 
 class ClassificadosService
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace TudoClassificados\App\src\Shortcodes\Anuncios;
+namespace TudoClassificados\App\Views\Pages;
 
 use TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\AnuncioUnicoClassificados;
 use TudoClassificados\App\src\Shortcodes\Anuncios\Imoveis\Templates\AnuncioUnicoImoveis;
-use TudoClassificados\App\src\Shortcodes\Anuncios\Marketplaces\Templates\AnuncioUnicoMarketplace;
+use TudoClassificados\App\Views\Pages\Marketplace\Anuncios\Show;
 
 class AnuncioUnico
 {
@@ -22,8 +22,8 @@ class AnuncioUnico
             }
 
             if ($tipo == 'marketplace') {
-                $anuncio = new AnuncioUnicoMarketplace();
-                return $anuncio->execute($post, $content);
+                $anuncio = new Show();
+                return $anuncio->index($post, $content);
             }
 
             if ($tipo == 'imoveis') {
