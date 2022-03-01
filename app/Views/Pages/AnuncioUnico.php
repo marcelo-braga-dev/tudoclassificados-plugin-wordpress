@@ -27,8 +27,8 @@ class AnuncioUnico
             }
 
             if ($tipo == 'imoveis') {
-                $anuncio = new AnuncioUnicoImoveis();
-                return $anuncio->execute($post, $content);
+                $anuncio = new \TudoClassificados\App\Views\Pages\Imoveis\Anuncios\Show();
+                return $anuncio->index($post, $content);
             }
         }
 
