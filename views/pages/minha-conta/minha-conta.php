@@ -1,218 +1,262 @@
 <style>
-    .seleciona-linha-table {
-        cursor: pointer;
-    }
+    /*.seleciona-linha-table {*/
+    /*    cursor: pointer;*/
+    /*}*/
 
-    .text-main {
-        /* color: var(--principal) !important; */
-        color: #333;
-        font-size: 14px;
-        font-weight: 300 !important;
-    }
+    /*.nav-link nav-lvl-2    /*    !* color: var(--principal) !important; *!*/
+    /*    color: #333;*/
+    /*    font-size: 14px;*/
+    /*    font-weight: 300 !important;*/
+    /*}*/
 
-    .text-main .active {
-        color: red !important;
-    }
+    /*.nav-link nav-lvl-2ive {*/
+    /*    color: red !important;*/
+    /*}*/
 
-    a.active {
-        color: orange !important;
-    }
+    /*a.active {*/
+    /*    color: orange !important;*/
+    /*}*/
 
-    .text-sub-menu {
-        font-size: 14px !important;
+    /*.text-sub-menu {*/
+    /*    font-size: 14px !important;*/
+    /*}*/
+    .nav-lvl-2.active {
+        color: orange;
     }
 </style>
-
+<!--ok//-->
 <div class="card" style="background-color: #fcfcfc">
-    <div class="row">
-        <div class="col-md-3 card pt-4 pb-md-9 mb-md-9">
-            <!-- Grupo de lista -->
-            <div class="list-group navbar-nav" id="minhaLista" role="tablist" style="font-size: 13px;">
+    <div class="row m-0">
+        <div class="col-md-2 card pt-4 pb-md-9 mb-md-9">
+
+            <ul class="list-group navbar-nav m-0" id="minhaLista" role="tablist" style="font-size: 13px;">
                 <!-- Perfil -->
-                <a class="text-main pl-1 mb-2 <?php if (empty($abaMenu)) echo 'active' ?>" id="resumo-tab"
-                   data-toggle="list" href="#resumo" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right">
-                            <i class="fas fa-user-alt"></i>
-                        </div>
-                        <div class="col-10">
-                            Perfil
-                        </div>
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-resumo"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-resumo">
+                        <i class="fas fa-user-alt"></i>
+                        <span class="ml-2">
+                            Resumo
+                        </span>
+                    </a>
+                    <div class="collapse" id="navbar-resumo">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   data-toggle="list"
+                                   href="#resumo" role="tab">
+                                    <span class="text-sub-menu">Dados de Contato</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
+                <li class="dropdown-divider pb-2"></li>
 
                 <!-- Classificados -->
-                <a class="text-main mb-2" id="anuncios-classificados-tab" data-toggle="list"
-                   href="" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right">
-                            <i class="fab fa-dribbble"></i>
-                        </div>
-                        <div class="col-10">
-                            Anúncios Classificados
-                        </div>
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-classificados"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-classificados">
+                        <i class="fab fa-dribbble"></i>
+                        <span class="ml-2">
+                            Classificados
+                        </span>
+                    </a>
+                    <div class="collapse
+                        <?= $abaMenu == 'classificados' || $abaMenu ==  'classificados-integrar-bling' ? 'show' : '' ?>" id="navbar-classificados">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
+                                   data-toggle="list"
+                                   href="#anuncios-classificados" role="tab">
+                                    <span class="text-sub-menu">Classificados de Produtos</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados-integrar-bling' ? 'active' : '' ?>"
+                                   id="classificados-integrar-tab" data-toggle="list"
+                                   href="#classificados-integrar" role="tab">
+                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
-                   id="classificados-produtos-tab" data-toggle="list"
-                   href="#anuncios-classificados" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Classificados de Produtos</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'classificados-integrar-bling' ? 'active' : '' ?>"
-                   id="classificados-integrar-tab" data-toggle="list"
-                   href="#classificados-integrar" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Integrar com Bling</span>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
+                <li class="dropdown-divider pb-2"></li>
 
                 <!-- Marketplace -->
-                <a class="text-main pl-1 mb-1" id="i ntegracoes-tab" data-toggle="list" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-auto text-right">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="col-10 ">
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-marketplace"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-marketplace">
+                        <i class="fas fa-store"></i>
+                        <span class="ml-2">
                             Marketplace
-                        </div>
+                        </span>
+                    </a>
+                    <div class="collapse <?= $abaMenu == 'marketplace' || $abaMenu == 'marketplace-integrar-bling' ? 'show' : '' ?>" id="navbar-marketplace">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace' ? 'active' : '' ?>"
+                                   data-toggle="list"
+                                   href="#marketplace_anuncios" role="tab">
+                                    <span class="text-sub-menu">Anuncios Marketplace</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-bling' ? 'active' : '' ?>"
+                                   id="classificados-integrar-tab" data-toggle="list"
+                                   href="#marketplace_integrar" role="tab">
+                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'marketplace' ? 'active' : '' ?>" id="anuncios_filiado-tab"
-                   data-toggle="list" href="#marketplace_anuncios"
-                   role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Anúncios Cadastrados</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'marketplace-integrar-bling' ? 'active' : '' ?>"
-                   id="marketplace_pesquisar-tab" data-toggle="list" href="#marketplace_integrar" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Integrar com Bling</span>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
 
-                <!-- Filiado -->
-                <a class="text-main pl-1 mb-1" id="i ntegracoes-tab" data-toggle="list" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-auto text-right">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="col-10 ">
-                            Anunciar como Afiliado
-                        </div>
+                <li class="dropdown-divider pb-2"></li>
+
+                <!-- Afiliado -->
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-afiliado"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-afiliado">
+                        <i class="fas fa-desktop"></i>
+                        <span class="ml-2">
+                            Afiliado
+                        </span>
+                    </a>
+                    <div class="collapse" id="navbar-afiliado">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   data-toggle="list"
+                                   href="#anuncios_filiado" role="tab">
+                                    <span class="text-sub-menu">Anuncios Afiliado</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   id="classificados-integrar-tab" data-toggle="list"
+                                   href="#filiado_bling" role="tab">
+                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <a class="text-main mb-2" id="anuncios_filiado-tab" data-toggle="list" href="#anuncios_filiado"
-                   role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Anúncios como Afiliado</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'filiado_bling' ? 'active' : '' ?>" id="filiado_bling-tab"
-                   data-toggle="list" href="#filiado_bling" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Integrar com Bling</span>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
+
+                <li class="dropdown-divider pb-2"></li>
 
                 <!-- Imoveis -->
-                <a class="text-main pl-1 mb-1" id="imoveis-integracoes-tab" data-toggle="list" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="col-10 ">
-                            Imoveis
-                        </div>
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-imoveis"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-imoveis">
+                        <i class="fas fa-home"></i>
+                        <span class="ml-2">
+                            Imóveis
+                        </span>
+                    </a>
+                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'imoveis-integrar-ingaia' ? 'show' : '' ?>" id="navbar-imoveis">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
+                                   data-toggle="list"
+                                   href="#imoveis_anuncios" role="tab">
+                                    <span class="text-sub-menu">Anuncios de Imóveis</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
+                                   id="classificados-integrar-tab" data-toggle="list"
+                                   href="#imoveis_ingaia" role="tab">
+                                    <span class="text-sub-menu">Integrar com inGaia</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>" id="imoveis_anuncios-tab"
-                   data-toggle="list" href="#imoveis_anuncios"
-                   role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Anúncios de Imóveis</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-main mb-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
-                   id="imoveis_ingaia-tab" data-toggle="list" href="#imoveis_ingaia" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right"></div>
-                        <div class="col-10 pl-4">
-                            <span class="text-sub-menu">Integrar com inGaia</span>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
 
-                <!-- Comentarios -->
-                <a class="text-main mb-2" id="comentarios-tab" data-toggle="list" href="#comentarios" role="tab">
-                    <div class="row nav-item mb-2">
-                        <div class="col-2 text-right">
-                            <i class="fas fa-comment"></i>
-                        </div>
-                        <div class="col-10">
-                            Comentários <span class="badge badge-danger mx-2" id="badge-comentarios"></span>
-                        </div>
+                <li class="dropdown-divider pb-2"></li>
+
+                <!-- Imoveis -->
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-comentarios"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-comentarios">
+                        <i class="fas fa-comment"></i>
+                        <span class="ml-2">
+                            Comentários
+                        </span>
+                    </a>
+                    <div class="collapse" id="navbar-comentarios">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   data-toggle="list"
+                                   href="#comentarios" role="tab">
+                                    <span class="text-sub-menu">Perguntas</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
+
+                <li class="dropdown-divider pb-2"></li>
 
                 <!-- Pagamentos -->
-                <a class="text-main mb-2" id="pagamentos-tab" data-toggle="list" href="#pagamentos" role="tab">
-                    <div class="row nav-item">
-                        <div class="col-2 text-right">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="col-10">
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-pagamentos"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-pagamentos">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span class="ml-2">
                             Pagamentos
-                        </div>
+                        </span>
+                    </a>
+                    <div class="collapse" id="navbar-pagamentos">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   data-toggle="list"
+                                   href="#pagamentos" role="tab">
+                                    <span class="text-sub-menu">Histórico</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-                <div class="dropdown-divider pb-2"></div>
+                </li>
 
-                <!-- Perfil -->
-                <a class="text-main mb-3" id="editar-perfil-tab" data-toggle="list" href="#editar-perfil"
-                   role="tab">
-                    <div class="row nav-item mb-2">
-                        <div class="col-2 text-right">
-                            <i class="fas fa-user-cog"></i>
-                        </div>
-                        <div class="col-10">
-                            Editar Perfil
-                        </div>
+                <li class="dropdown-divider pb-2"></li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-perfil"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-perfil">
+                        <i class="fas fa-user-cog"></i>
+                        <span class="ml-2">
+                            Minha Conta
+                        </span>
+                    </a>
+                    <div class="collapse" id="navbar-perfil">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2"
+                                   data-toggle="list"
+                                   href="#editar-perfil" role="tab">
+                                    <span class="text-sub-menu">Editar Perfil</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </a>
-            </div>
+                </li>
+            </ul>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-10">
             <!-- Painel de abas -->
             <div class="tab-content">
                 <!-- Resumo -->
@@ -328,7 +372,26 @@
 <script>
     let limite_disponivel_imoveis = <?= $limitesImovel['novos'] ?>;
 </script>
-<?php /*
+<?php
+function bs4t_nav_minha_conta()
+{
+    ?>
+    <script>
+        $(function () {
+
+            $('.nav-lvl-1').click(function () {
+                $('.nav-lvl-1').parent().parent().find('.show').toggleClass('show', 5000);
+                $('.nav-lvl-2').removeClass('active');
+            });
+        });
+    </script>
+    <?php
+}
+
+add_action('wp_footer', 'bs4t_nav_minha_conta', 102);
+
+
+/*
 function bs4t_integracao_ingaia()
 {
     ?>
