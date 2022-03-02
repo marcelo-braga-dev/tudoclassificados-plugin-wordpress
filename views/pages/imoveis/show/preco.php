@@ -81,7 +81,7 @@ function MontarLink($texto)
                     <i class="fas fa-external-link" style="font-size: 24px;"></i>
                 </div>
                 <div class="col-10 rounded-right text-white text-truncate">
-                    <span style="font-size: 16px;">IR PARA O SITE DE VENDA</span>
+                    <span style="font-size: 16px;">VISITAR SITE DO ANÚNCIO</span>
                 </div>
             </div>
         </a>

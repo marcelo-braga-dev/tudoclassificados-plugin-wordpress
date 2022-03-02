@@ -154,7 +154,7 @@ function the_acadp_social_sharing_buttons()
         if (isset($socialshare_settings['services'])) {
             if (in_array('facebook', $socialshare_settings['services'])) {
                 $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u=' . $url;
-                $buttons[] = '<a class="" href="' . $facebookURL . '" target="_blank"><i class="bi bi-facebook" style="color: #2d4372;"></i></a>';
+                $buttons[] = '<a class="" href="' . $facebookURL . '" target="_blank"><i class="fab fa-facebook" style="color: #2d4372;"></i></a>';
             }
 
             if (in_array('twitter', $socialshare_settings['services'])) {
@@ -164,7 +164,7 @@ function the_acadp_social_sharing_buttons()
 
             if (in_array('linkedin', $socialshare_settings['services'])) {
                 $linkedinURL = 'https://www.linkedin.com/shareArticle?url=' . $url . '&amp;title=' . $title;
-                $buttons[] = '<a class="" href="' . $linkedinURL . '" target="_blank"><i class="bi bi-linkedin"></i></a>';
+                $buttons[] = '<a class="" href="' . $linkedinURL . '" target="_blank"><i class="fab fa-twitter"></i></a>';
             }
 
             if (in_array('pinterest', $socialshare_settings['services'])) {
@@ -174,12 +174,12 @@ function the_acadp_social_sharing_buttons()
 
             if (in_array('whatsapp', $socialshare_settings['services'])) {
                 $whatsappURL = 'https://api.whatsapp.com/send?text=' . $title . '&nbsp;' . $url;
-                $buttons[] = '<a class="" href="' . $whatsappURL . '" target="_blank" data-text="' . $title . '" data-link="' . $url . '" style="border-radius:5px"><i class="bi bi-whatsapp" style="color: #12af0a;"></i></a>';
+                $buttons[] = '<a class="" href="' . $whatsappURL . '" target="_blank" data-text="' . $title . '" data-link="' . $url . '" style="border-radius:5px"><i class="fab fa-whatsapp" style="color: #12af0a;"></i></a>';
             }
         }
 
         if (count($buttons)) {
-            echo '<small class="text-muted">Compartilhe:</small> ' . implode(' ', $buttons);
+            echo '<small class="text-muted">Compartilhe:</small> ' . implode(' | ', $buttons);
         }
     }
 }
