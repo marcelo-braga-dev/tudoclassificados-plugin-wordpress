@@ -25,7 +25,8 @@
             <?php else : ?>
                 <!-- Slider for -->
                 <div class="acadp-slider-for">
-                    <?php foreach ($images as $index => $image) :
+                    <?php $i = 0;
+                    foreach ($images as $index => $image) : $i++;
                         $image_attributes = wp_get_attachment_image_src($images[$index], 'large');
                         $imagemCarrocel = esc_url($image_attributes[0]);
 
@@ -35,8 +36,9 @@
                         <div class="acadp-slider-item">
                             <div class="row justify-content-center">
                                 <div class="col-auto">
-                                    <img src="<?= $imagemCarrocel ?>" class="acadp-responsive-item rounded"
-                                         style="height:450px; cursor: zoom-in;"/>
+                                    <img src="<?= $imagemCarrocel ?>"
+                                         class="acadp-responsive-item rounded img-principal"
+                                         style="height:450px; cursor: zoom-in;<?php if ($i > 1) echo 'display: none' ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -44,14 +46,16 @@
                 </div>
                 <!-- Slider nav -->
                 <div class="acadp-slider-nav" style="margin:5px 15%">
-                    <?php foreach ($images as $index => $image) :
-                        $image_attributes = wp_get_attachment_image_src($images[$index], 'thumbnail');
+                    <?php
+                    $i = 0;
+                    foreach ($images as $index => $image) : $i++;
+                        $image_attributes = wp_get_attachment_image_src($images[$index]);
                         $imagemCarrocel = esc_url($image_attributes[0]);
 
                         $urlExterno = get_post_meta($images[$index])['_url_externo'][0];
                         if (!empty($urlExterno)) $imagemCarrocel = $urlExterno;
                         ?>
-                        <div class="p-2">
+                        <div class="p-2 img-principal-slider" style="display: none">
                             <picture>
                                 <img class="rounded" src="<?= $imagemCarrocel ?>"
                                      style="width: 100px; height:80px; cursor: pointer;"/>
@@ -63,3 +67,15 @@
         </div>
     </div>
 </div>
+
+<?php
+function tc_anuncio_unico_display_slide_imagem_principal()
+{ ?>
+    <script>
+        $(function () {
+            $('.img-principal-slider, .img-principal').css('display', 'block');
+        })
+    </script>
+<?php }
+
+add_action('wp_footer', 'tc_anuncio_unico_display_slide_imagem_principal', 300);
