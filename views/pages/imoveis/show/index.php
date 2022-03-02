@@ -48,5 +48,4 @@ include_once 'assets/funcoes.php';
 <?php
 wp_enqueue_script('anuncio-2', plugin_dir_url(__FILE__) . 'assets/js/nova_pergunta.js', [], false, true);
 wp_enqueue_script('anuncio-3', plugin_dir_url(__FILE__) . 'assets/js/videos.js', [], false, true);
-wp_enqueue_script('anuncio-4', plugin_dir_url(__FILE__) . 'assets/js/carrocel_destaque.js', [], false, true);
 ?>

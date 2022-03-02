@@ -1,6 +1,8 @@
 <?php
 namespace TudoClassificados\App\src\Shortcodes\Anuncios\Imoveis\Templates;
 
+use WP_Query;
+
 class Grid
 {
     public function __construct()
@@ -309,7 +311,6 @@ class Grid
         // Process output
         if ($acadp_query->have_posts()) {
             ob_start();
-            include TUDOCLASSIFICADOS_PATH . 'widgets/carrocel_anuncios.php';
             // include(acadp_get_template("listings/acadp-public-listings-$view-display.php"));
             // require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/lista_anuncio/index.php';
             return ob_get_clean();

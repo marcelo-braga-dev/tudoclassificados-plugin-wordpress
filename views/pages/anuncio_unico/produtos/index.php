@@ -17,10 +17,7 @@ $classProdutos = new ProdutosAnuncio();
                 <?php require 'lateral.php' ?>
             </div>
         </div>
-        
-        <hr>
-        <!-- CARROCEL DESTAQUE -->
-        <?php //include 'carrocel_destaque.php' ?>
+
         <hr>
 
         <?php include 'desc-carac.php' ?>

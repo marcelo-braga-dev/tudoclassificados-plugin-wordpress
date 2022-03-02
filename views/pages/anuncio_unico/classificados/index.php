@@ -84,7 +84,6 @@ function bs4t_nova_pergunta_produtos()
 ?>
    <script src="/wp-content/plugins/tudoclassificados/views/pages/pages/anuncio_unico/imoveis/assets/js/nova_pergunta.js"></script>
    <script src="/wp-content/plugins/tudoclassificados/views/pages/pages/anuncio_unico/imoveis/assets/js/videos.js"></script>
-    <script src="/wp-content/plugins/tudoclassificados/views/pages/pages/anuncio_unico/produtos/assets/js/carrocel_destaque.js"></script>
 <?php
 }
 add_action('wp_footer', 'bs4t_nova_pergunta_produtos', 102);

@@ -65,13 +65,14 @@
                         </span>
                     </a>
                     <div class="collapse
-                        <?= $abaMenu == 'classificados' || $abaMenu ==  'classificados-integrar-bling' ? 'show' : '' ?>" id="navbar-classificados">
+                        <?= $abaMenu == 'classificados' || $abaMenu == 'classificados-integrar-bling' ? 'show' : '' ?>"
+                         id="navbar-classificados">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#anuncios-classificados" role="tab">
-                                    <span class="text-sub-menu">Classificados de Produtos</span>
+                                    <span class="text-sub-menu">Anúncios Classificados</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -96,7 +97,8 @@
                             Marketplace
                         </span>
                     </a>
-                    <div class="collapse <?= $abaMenu == 'marketplace' || $abaMenu == 'marketplace-integrar-bling' ? 'show' : '' ?>" id="navbar-marketplace">
+                    <div class="collapse <?= $abaMenu == 'marketplace' || $abaMenu == 'marketplace-integrar-bling' ? 'show' : '' ?>"
+                         id="navbar-marketplace">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace' ? 'active' : '' ?>"
@@ -160,7 +162,8 @@
                             Imóveis
                         </span>
                     </a>
-                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'imoveis-integrar-ingaia' ? 'show' : '' ?>" id="navbar-imoveis">
+                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'imoveis-integrar-ingaia' ? 'show' : '' ?>"
+                         id="navbar-imoveis">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
@@ -324,7 +327,6 @@
 </div>
 
 <?php if (!empty($alerta)) : ?>
-
     <!-- Modal -->
     <div class="modal fade" id="modalAlertSimples" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
          aria-hidden="true">
@@ -375,10 +377,11 @@
 <?php
 function bs4t_nav_minha_conta()
 {
+    wp_enqueue_script('minha-conta-1', plugin_dir_url(__FILE__) . 'assets/js/main.js', [], false, true);
     ?>
+    <script src="<?= plugin_dir_url(__FILE__) . 'assets/js/main.js' ?>"></script>
     <script>
         $(function () {
-
             $('.nav-lvl-1').click(function () {
                 $('.nav-lvl-1').parent().parent().find('.show').toggleClass('show', 5000);
                 $('.nav-lvl-2').removeClass('active');
@@ -391,24 +394,23 @@ function bs4t_nav_minha_conta()
 add_action('wp_footer', 'bs4t_nav_minha_conta', 102);
 
 
-/*
-function bs4t_integracao_ingaia()
-{
-    ?>
-    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/imoveis/ingaia/principal.js"></script>
-    <?php
-}
-
-add_action('wp_footer', 'bs4t_integracao_ingaia', 102);*/
-?>
-
+//function bs4t_integracao_ingaia()
+//{
+//    ?>
+<!--    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/imoveis/ingaia/principal.js"></script>-->
+<!--    --><?php
+//}
+//
+//add_action('wp_footer', 'bs4t_integracao_ingaia', 102);
+//?>
+<!---->
 <?php
 //function bs4t_salvar_resposta_comentario()
 //{
 //    ?>
-<!--    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/assets/js/comentarios.js?id=--><? //= uniqid() ?><!--"></script>-->
+<!--    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/assets/js/comentarios.js?id=--><? // //= uniqid() ?><!--"></script>-->
 <!--    --><?php
 //}
 //
 //add_action('wp_footer', 'bs4t_salvar_resposta_comentario', 102);
-?>
+//?>

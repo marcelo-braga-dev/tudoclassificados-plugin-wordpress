@@ -3,6 +3,7 @@
 namespace TudoClassificados\App\src\Shortcodes;
 
 use TudoClassificados\App\Views\Widgets\Categorias;
+use TudoClassificados\App\Views\Widgets\GridAunciosHorizontal;
 
 class Widgets
 {
@@ -16,6 +17,12 @@ class Widgets
         if ($atts['chave'] == 'categorias') {
             $categorias = new Categorias();
             return $categorias->execute();
+        }
+
+        if ($atts['chave'] == 'grid-anuncios-horizontal') {
+            // qtd=""
+            $grid = new GridAunciosHorizontal();
+            return $grid->index($atts);
         }
     }
 }

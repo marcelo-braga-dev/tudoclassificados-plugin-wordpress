@@ -89,7 +89,7 @@
 
                 <div class="col-md-3 text-right">
                     <!-- Botoes -->
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-12">
                             <?php
                             $can_edit = 1;
@@ -141,23 +141,17 @@
                         </div>
                     </div>
 
-                    <hr class="my-3">
-                    <?php //if (bs4t_user_is_premium('imoveis') || bs4t_user_is_premium('geral')) :
-                    ?>
-                    <!-- Botao Premium -->
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-end border-top pt-2">
                         <div class="col-auto">
-                            <div class="togglebutton mb-3">
-                                <label class="text-primary">
-                                    <input type="checkbox"
-                                           class="btn-premium btn-premium-< ?= is_imovel($category->parent) ? 'imovel' : 'geral' ?>"
-                                           tipo="<?= $category->parent ?>"
-                                           post-id="<?= $post->ID ?>"
-                                        <?php if ($post_meta['featured'][0]) echo 'checked' ?>>
-                                    <span class="toggle"></span>
-                                    Anúncio Premium
-                                </label>
-                            </div>
+                            Premium<br>
+                            <label class="custom-toggle">
+                                <input type="checkbox"
+                                       class="btn-premium btn-premium-geral"
+                                       tipo="<?= $category->parent ?>"
+                                       post-id="<?= $post->ID ?>"
+                                    <?php if ($post_meta['featured'][0]) echo 'checked' ?> >
+                                <span class="custom-toggle-slider rounded-circle"></span>
+                            </label>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,9 @@ new \TudoClassificados\App\src\Shortcodes\Anuncios\CardGerenciarAnuncio();
 new \TudoClassificados\App\src\Shortcodes\Widgets();
 
 //
-require_once 'classificados/include.php';
+new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\Grid();
+new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\ListaAnuncios();
+
 
 require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/ListaImoveis.php';
 require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/Cards.php';

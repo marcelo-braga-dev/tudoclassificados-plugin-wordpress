@@ -1,16 +1,4 @@
 <div class="acadp acadp-user acadp-manage-listings acadp-list-view">
-    <?php if (isset($_GET['submitted']) && 1 == $_GET['submitted']) : ?>
-        <div class="alert alert-info" role="alert">
-            <?php esc_html_e('Thank you for submitting your listing.', 'advanced-classifieds-and-directory-pro'); ?>
-        </div>
-    <?php endif; ?>
-
-    <?php if (isset($_GET['renew']) && 'success' == $_GET['renew']) : ?>
-        <div class="alert alert-info" role="alert">
-            <?php esc_html_e('Thank you for renewing your listing.', 'advanced-classifieds-and-directory-pro'); ?>
-        </div>
-    <?php endif; ?>
-
     <!-- the loop -->
     <?php while ($acadp_query->have_posts()) :
         $acadp_query->the_post();
@@ -26,7 +14,7 @@
                 <div class=" col-md-6">
                     <div class="acadp-listings-title-block">
                         <h3 class="acadp-no-margin"><a
-                                href="<?php the_permalink(); ?>"><?php echo esc_html(get_the_title()); ?></a></h3>
+                                    href="<?php the_permalink(); ?>"><?php echo esc_html(get_the_title()); ?></a></h3>
                         <?php the_acadp_listing_labels($post_meta); ?>
                     </div>
 
@@ -100,7 +88,7 @@
 
                 <div class="col-md-3 text-right">
                     <!-- Botoes -->
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-12">
                             <?php
                             $can_edit = 1;
@@ -148,33 +136,21 @@
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
-                        <div class="col-12">
-                        </div>
                     </div>
 
-                    <hr class="my-3">
-                    <?php //if (bs4t_user_is_premium('imoveis') || bs4t_user_is_premium('geral')) : ?>
-                    <!-- Botao Premium -->
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-end border-top pt-2">
                         <div class="col-auto">
-                            <div class="togglebutton mb-3">
-                                <label class="text-primary">
-                                    <input type="checkbox"
-                                           class="btn-premium btn-premium-< ?= is_imovel($category->parent) ? 'imovel' : 'geral' ?>"
-                                           tipo="<?= $category->parent ?>"
-                                           post-id="<?= $post->ID ?>"
-                                        <?php if ($post_meta['featured'][0]) echo 'checked' ?>>
-                                    <span class="toggle"></span>
-                                    Anúncio Premium
-                                </label>
-                            </div>
+                            Premium<br>
+                            <label class="custom-toggle">
+                                <input type="checkbox"
+                                       class="btn-premium btn-premium-geral"
+                                       tipo="<?= $category->parent ?>"
+                                       post-id="<?= $post->ID ?>"
+                                    <?php if ($post_meta['featured'][0]) echo 'checked' ?> >
+                                <span class="custom-toggle-slider rounded-circle"></span>
+                            </label>
                         </div>
                     </div>
-                    <?php
-                    if ($post_meta['featured'][0] && $category->parent == '27') $qtdImovelAtivo++;
-                    if ($post_meta['featured'][0] && $category->parent != '27') $qtdGeralAtivo++;
-                    ?>
-                    <?// endif; ?>
                 </div>
             </div>
         </div>
@@ -183,5 +159,3 @@
     <!-- pagination here -->
     <?php the_acadp_pagination($acadp_query->max_num_pages, "", $paged); ?>
 </div>
-<input type="hidden" id="qtd-imovel-ativo" value="<?= $qtdImovelAtivo ?>">
-<input type="hidden" id="qtd-geral-ativo" value="<?= $qtdGeralAtivo ?>">

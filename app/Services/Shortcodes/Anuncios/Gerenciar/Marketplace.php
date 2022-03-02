@@ -68,8 +68,8 @@ class Marketplace
 
         // Process output
         ob_start();
-        include TUDOCLASSIFICADOS_PATH . 'views/components/minha-conta/marketplace/edit-anuncio.php';
-        wp_reset_postdata(); // Use reset postdata to restore orginal query
+        include TUDOCLASSIFICADOS_PATH_VIEW . 'components/minha-conta/marketplace/edit-anuncio.php';
+        wp_reset_postdata();
         return ob_get_clean();
     }
 }
