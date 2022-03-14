@@ -69,6 +69,12 @@
                          id="navbar-classificados">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-classificados' ? 'active' : '' ?>"
+                                   data-toggle="list" href="#novo-classificados" role="tab">
+                                    <span class="text-sub-menu">Novo Anúncio</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#anuncios-classificados" role="tab">
@@ -269,6 +275,10 @@
                 </div>
 
                 <!-- Anuncios Classificados -->
+                <div class="tab-pane fade <?= $abaMenu == 'classificados' ? 'active show' : '' ?>"
+                     id="novo-classificados" role="tabpanel">
+                    <?php include 'classificados/novo-anuncio/novo-anuncio.php' ?>
+                </div>
                 <div class="tab-pane fade <?= $abaMenu == 'classificados' ? 'active show' : '' ?>"
                      id="anuncios-classificados" role="tabpanel">
                     <?php include 'classificados/anuncios-classificados.php' ?>

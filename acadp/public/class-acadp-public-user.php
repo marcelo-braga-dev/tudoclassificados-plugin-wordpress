@@ -10,20 +10,13 @@
  */
 
 // Exit if accessed directly
-use TudoClassificados\App\Anuncios\FormulariosCadastro\AnuncioPadrao;
-use TudoClassificados\App\Anuncios\Status\Deletar;
-use TudoClassificados\App\Anuncios\Status\RemoverFavoritos;
-use TudoClassificados\App\Anuncios\Status\Renovar;
+//use TudoClassificados\App\Anuncios\FormulariosCadastro\AnuncioPadrao;
 use TudoClassificados\App\Services\Anuncios\Imagens\UploadAjax;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\AnunciosFavoritos;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\AnunciosUsuario;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\CustomFields\FieldsPadrao;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\FormPadrao;
-use TudoClassificados\App\Services\Shortcodes\Anuncios\Gerenciar\Afiliado;
-use TudoClassificados\App\Services\Shortcodes\Anuncios\Gerenciar\Classificados;
-use TudoClassificados\App\Services\Shortcodes\Anuncios\Gerenciar\Imoveis;
-use TudoClassificados\App\Services\Shortcodes\Anuncios\Gerenciar\Marketplace;
-use TudoClassificados\App\Services\Shortcodes\Anuncios\Gerenciar\Padrao;
+use TudoClassificados\App\src\Anuncios\FormulariosCadastro\AnuncioPadrao;
 
 if (!defined('WPINC')) {
     die;
@@ -87,7 +80,7 @@ class ACADP_Public_User
      */
     private function save_listing()
     {
-        $anuncio = new AnuncioPadrao();
+        $anuncio = new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\SalvarAnuncio();
         $anuncio->execute();
     }
 

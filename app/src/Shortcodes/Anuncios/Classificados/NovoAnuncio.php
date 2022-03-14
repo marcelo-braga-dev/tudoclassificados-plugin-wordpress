@@ -1,10 +1,15 @@
 <?php
 
-namespace TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro;
+namespace TudoClassificados\App\src\Shortcodes\Anuncios\Classificados;
 
-class FormPadrao
+class NovoAnuncio
 {
-    public function execute()
+    public function __construct()
+    {
+        add_shortcode("tc_novo_anuncio", array($this, "run_shortcode_paginas"));
+    }
+
+    public function run_shortcode_paginas($attr)
     {
         if (!is_user_logged_in()) {
             return acadp_login_form();
@@ -96,9 +101,13 @@ class FormPadrao
             }
         }
 
-        ob_start();
-        include(acadp_get_template("user/acadp-public-edit-listing-display.php"));
-        wp_reset_postdata();
-        return 'ob_get_clean()';
+        //ob_start();
+        include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/minha-conta/classificados/novo-anuncio/form.php';
+        //return ob_get_clean();
+        //ob_start();
+        //include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/minha-conta/classificados/novo-anuncio/form.php';
+        ////wp_reset_postdata();
+        //echo 'xx';
+        //return ob_get_clean();
     }
 }

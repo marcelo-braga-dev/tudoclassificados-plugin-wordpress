@@ -9,10 +9,10 @@ new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\Grid(
 new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\ListaAnuncios();
 
 
-require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/ListaImoveis.php';
+
 require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/Cards.php';
 require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/Marketplace/ListaAnunciosMarketplace.php';
 
-new ListaImoveis();
+new TudoClassificados\App\Views\Pages\Imoveis\Anuncios\Index;
 new Cards();
 new ListaAnunciosMarketplace();

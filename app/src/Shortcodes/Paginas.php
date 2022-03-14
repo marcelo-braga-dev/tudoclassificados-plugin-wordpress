@@ -2,6 +2,8 @@
 
 namespace TudoClassificados\App\src\Shortcodes;
 
+use TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\NovoAnuncio;
+
 class Paginas
 {
     public function __construct()
@@ -13,6 +15,7 @@ class Paginas
     {
         if ($atts['pagina'] == 'minha-conta') {
             if (is_user_logged_in()) {
+                new NovoAnuncio();
                 require_once TUDOCLASSIFICADOS_PATH . 'app/Services/Pages/MinhaConta/index.php';
             }
         }
