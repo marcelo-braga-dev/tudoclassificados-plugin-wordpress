@@ -17,6 +17,9 @@ use TudoClassificados\App\Services\Shortcodes\Anuncios\AnunciosUsuario;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\CustomFields\FieldsPadrao;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\FormPadrao;
 use TudoClassificados\App\src\Anuncios\FormulariosCadastro\AnuncioPadrao;
+use TudoClassificados\App\src\Anuncios\Status\Deletar;
+use TudoClassificados\App\src\Anuncios\Status\RemoverFavoritos;
+use TudoClassificados\App\src\Anuncios\Status\Renovar;
 
 if (!defined('WPINC')) {
     die;

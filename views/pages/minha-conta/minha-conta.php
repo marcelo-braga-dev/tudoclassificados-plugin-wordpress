@@ -24,7 +24,7 @@
         color: orange;
     }
 </style>
-<!--ok//-->
+
 <div class="card" style="background-color: #fcfcfc">
     <div class="row m-0">
         <div class="col-md-2 card pt-4 pb-md-9 mb-md-9">
