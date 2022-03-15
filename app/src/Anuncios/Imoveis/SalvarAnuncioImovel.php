@@ -1,8 +1,8 @@
 <?php
 
-namespace TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates;
+namespace TudoClassificados\App\src\Anuncios\Imoveis;
 
-class SalvarAnuncio
+class SalvarAnuncioImovel
 {
     public function execute()
     {
@@ -130,7 +130,7 @@ class SalvarAnuncio
 
                 wp_set_object_terms($post_id, (int)$_POST['acadp_location'], 'acadp_locations');
 
-                update_post_meta($post_id, 'tipo', 'classificados');
+                update_post_meta($post_id, 'tipo', 'imoveis');
 
                 $zipcode = sanitize_text_field($_POST['zipcode']);
                 update_post_meta($post_id, 'zipcode', $zipcode);
@@ -175,8 +175,7 @@ class SalvarAnuncio
                 $freteGratis = sanitize_text_field($_POST['frete-gratis']);
                 update_post_meta($post_id, 'frete_gratis', $freteGratis);
 
-                session_start();
-                $_SESSION['novo-anuncio'] = true;
+                session('aba_minha_conta', 'imoveis');
             }
 
             if (!empty($general_settings['has_price'])) {

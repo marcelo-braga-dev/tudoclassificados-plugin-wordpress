@@ -64,25 +64,25 @@
                         $user_meta = get_user_meta(get_current_user_id());
                         ?>
                         <div class="row">
-<!--                            <div class="col-12">-->
-<!--                                <div class="row justify-content-end text-end mb-2">-->
-<!--                                    <div class="col-auto">-->
-<!--                                        <small class="text-muted">-->
-<!--                                            Anunciar com:-->
-<!--                                        </small>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-auto">-->
-<!--                                        <a href="/minha-conta">-->
-<!--                                            < !--                        <img height="25px" src="/wp-content/plugins/tudoclassificados/imagens/logo-bling.png" style="height: 25px;">-- >-->
-<!--                                        </a>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-auto">-->
-<!--                                        <a href="/minha-conta">-->
-<!--                                            < !--                        <img src="/wp-content/plugins/tudoclassificados/imagens/logo-inGaia.png" style="height: 25px;">-- >-->
-<!--                                        </a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="col-12">-->
+                            <!--                                <div class="row justify-content-end text-end mb-2">-->
+                            <!--                                    <div class="col-auto">-->
+                            <!--                                        <small class="text-muted">-->
+                            <!--                                            Anunciar com:-->
+                            <!--                                        </small>-->
+                            <!--                                    </div>-->
+                            <!--                                    <div class="col-auto">-->
+                            <!--                                        <a href="/minha-conta">-->
+                            <!--                                            < !--                        <img height="25px" src="/wp-content/plugins/tudoclassificados/imagens/logo-bling.png" style="height: 25px;">-- >-->
+                            <!--                                        </a>-->
+                            <!--                                    </div>-->
+                            <!--                                    <div class="col-auto">-->
+                            <!--                                        <a href="/minha-conta">-->
+                            <!--                                            < !--                        <img src="/wp-content/plugins/tudoclassificados/imagens/logo-inGaia.png" style="height: 25px;">-- >-->
+                            <!--                                        </a>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                             <form action="<?= esc_url(acadp_get_listing_form_page_link()); ?>" method="post">
                                 <!-- TÍTULO DO ANÚNCIO -->
                                 <div class="card mb-3">
@@ -167,38 +167,17 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Estado</label>
-                                                <select name="estado" id="estados" class="form-control select2"
+                                                <select name="estado" id="estados"
+                                                        class="form-control select2 estados-classificados"
                                                         required></select>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <label>Cidade</label>
-                                                <select name="cidade" id="cidades" class="form-control select2"
+                                                <select name="cidade" id="cidades"
+                                                        class="form-control select2 cidades-classificados"
                                                         required></select>
                                             </div>
-
-                                            <!--
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="acadp_location">Região</label>
-						<?php
-                                            acadp_dropdown_terms(array(
-                                                'show_option_none' => '-- ' . esc_html__('Selecionar Região', 'advanced-classifieds-and-directory-pro') . ' --',
-                                                'option_none_value' => '', //(int) $general_settings['base_location'],
-                                                'base_term' => max(0, (int)$general_settings['base_location']),
-                                                'parent' => max(0, (int)$general_settings['base_location']),
-                                                'taxonomy' => 'acadp_locations',
-                                                'name' => 'acadp_location',
-                                                'class' => 'form-control acadp-map-field',
-                                                'required' => true,
-                                                'orderby' => sanitize_text_field($locations_settings['orderby']),
-                                                'order' => sanitize_text_field($locations_settings['order']),
-                                                'selected' => (int)$location
-                                            ));
-                                            ?>
-					</div>
-
-				</div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +271,7 @@
                                                             </p>
                                                         <?php endif; ?>
 
-                                                        <table class="acadp-images bg-white" id="acadp-images"
+                                                        <table class="acadp-images bg-white" id="acadp-images-classi"
                                                                data-exist="true">
                                                             <tbody>
                                                             <?php
@@ -304,7 +283,8 @@
                                                                     $image_attributes = wp_get_attachment_image_src($images[$index]);
 
                                                                     if (isset($image_attributes[0])) {
-                                                                        echo '<tr class="acadp-image-row">' .
+                                                                        echo
+                                                                            '<tr class="acadp-image-row">' .
                                                                             '<td class="acadp-handle"><span class="glyphicon glyphicon-th-large"><i class="bi bi-chevron-bar-expand"></i></span></td>' .
                                                                             '<td class="acadp-image">' .
                                                                             '<img src="' . esc_url($image_attributes[0]) . '" />' .
@@ -324,10 +304,12 @@
                                                             ?>
                                                             </tbody>
                                                         </table>
-                                                        <div id="acadp-progress-image-upload"></div>
+                                                        <div id="acadp-progress-image-upload-classi"></div>
                                                         <a href="javascript:void(0);" class="btn btn-primary"
-                                                           id="acadp-upload-image"
-                                                           data-limit="<?= esc_attr($images_limit); ?>" <?= $disable_image_upload_attr; ?>><?php esc_html_e('Upload Image', 'advanced-classifieds-and-directory-pro'); ?></a>
+                                                           id="acadp-upload-image-classi"
+                                                           data-limit="<?= esc_attr($images_limit); ?>" <?= $disable_image_upload_attr; ?>>
+                                                            <?php esc_html_e('Upload Image', 'advanced-classifieds-and-directory-pro'); ?>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
@@ -342,8 +324,9 @@
                                             <h6 class="col-12">Contato</h6>
                                             <div class="col-md-6">
                                                 <div class="form-group bmd-form-group">
-                                                    <label for="acadp-phone"><small>Whatsapp para contato com
-                                                            clientes</small></label>
+                                                    <label for="acadp-phone">
+                                                        <small>Whatsapp para contato com clientes</small>
+                                                    </label>
                                                     <input type="text" name="phone" id="acadp-phone"
                                                            class="form-control" placeholder="(00) 0 0000-0000"
                                                            data-mask="(00) 0 0000-0000"
@@ -403,8 +386,8 @@
                                                                value="1" <?php if (isset($post_meta['hide_map'])) checked($post_meta['hide_map'][0], 1); ?>>
                                                         Não inserir mapa no anúncio.
                                                         <span class="form-check-sign">
-										<span class="check"></span>
-									</span>
+										                    <span class="check"></span>
+									                    </span>
                                                     </label>
                                                 </div>
                                                 <div class="acadp-map embed-responsive embed-responsive-16by9 bg-white"
@@ -428,7 +411,6 @@
                                 </div>
 
                                 <!-- Display errors -->
-                                <!-- <div class="alert alert-danger mt-3" role="alert" style="display: none;"> -->
                                 <div class="row alert alert-danger" id="alerta-erros" style="display: none;">
                                     <div class="col-auto align-items-center">
                                         <h4><i class="bi bi-exclamation-diamond" style="font-size: 22px;"></i></h4>
@@ -439,7 +421,6 @@
                                             editar.</small>
                                     </div>
                                 </div>
-                                <!-- </div> -->
 
                                 <!-- BOTOES -->
                                 <div class="card">
@@ -492,38 +473,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="tipo-anuncio" value="classificados">
                             </form>
                         </div>
+
                         <!-- CARREGA IMAGENS -->
                         <form id="acadp-form-upload" class="hidden" method="post" action="#"
                               enctype="multipart/form-data">
-                            <input type="file" multiple name="acadp_image[]" id="acadp-upload-image-hidden"
+                            <input type="file" multiple name="acadp_image[]" id="acadp-upload-image-hidden-classi"
                                    style="display: none;"/>
                             <input type="hidden" name="action" value="acadp_public_image_upload"/>
                             <?php wp_nonce_field('acadp_upload_images', 'acadp_images_nonce'); ?>
                         </form>
 
-                        <div class="acadp acadp-user acadp-post-form">
-                        </div>
-
-                        <script>
-                            var estado = '<?= $post_meta['estado'][0] ?>';
-                            var cidade = '<?= $post_meta['cidade'][0] ?>';
-                        </script>
-
-                        <?php
-
-                        function bs4t_adicionando_script()
-                        {
-                            ?>
-                            <script src="/wp-content/plugins/tudoclassificados/assets/js/currency.js"></script>
-                            <script src="/wp-content/plugins/tudoclassificados/assets/js/cidade-estado-select/main.js?id=<?= uniqid() ?>"></script>
-                            <script src="/wp-content/plugins/tudoclassificados/views/pages/novo_anuncio/assets/js/principal.js?id=<?= uniqid() ?>"></script>
-                            <?php
-                        }
-
-                        add_action('wp_footer', 'bs4t_adicionando_script', 101);
-                        ?>
+                        <div class="acadp acadp-user acadp-post-form"></div>
 
                         <!-- Hook for developers to add new fields -->
                         <?php do_action('acadp_listing_form_fields'); ?>

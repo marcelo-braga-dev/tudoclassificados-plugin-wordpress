@@ -193,7 +193,7 @@
 	function acadp_update_latlng(point) {
 		$('#acadp-latitude').val(point.lat());
 		$('#acadp-longitude').val(point.lng());
-	};
+	}
 
 	/**
 	 *  Make images inside the listing form sortable.
@@ -202,18 +202,34 @@
 	 */
 	function acadp_sort_images() {
 		if ($.fn.sortable) {
-			var $sortable_element = $('#acadp-images tbody');
+			var $sortable_element = $('#acadp-images-classi tbody');
 
 			if ($sortable_element.hasClass('ui-sortable')) {
 				$sortable_element.sortable('destroy');
-			};
+			}
 
 			$sortable_element.sortable({
 				handle: '.acadp-handle'
 			});
 
 			$sortable_element.disableSelection();
-		};
+		}
+	}
+	/////////
+	function acadp_sort_images_imoveis() {
+		if ($.fn.sortable) {
+			var $sortable_element = $('#acadp-images-imoveis tbody');
+
+			if ($sortable_element.hasClass('ui-sortable')) {
+				$sortable_element.sortable('destroy');
+			}
+
+			$sortable_element.sortable({
+				handle: '.acadp-handle'
+			});
+
+			$sortable_element.disableSelection();
+		}
 	}
 
 	/**
@@ -226,11 +242,14 @@
 		var limit = acadp_images_limit();
 		var uploaded = acadp_images_uploaded_count();
 
-		if ((limit > 0 && uploaded >= limit) || $('#acadp-progress-image-upload').hasClass('uploading')) {
-			return false;
-		}
+		return !((limit > 0 && uploaded >= limit) || $('#acadp-progress-image-upload-classi').hasClass('uploading'));
+	}
+	/////////
+	function acadp_can_upload_image_imoveis() {
+		var limit = acadp_images_limit_imoveis();
+		var uploaded = acadp_images_uploaded_count_imoveis();
 
-		return true;
+		return !((limit > 0 && uploaded >= limit) || $('#acadp-progress-image-upload-imoveis').hasClass('uploading'));
 	}
 
 	/**
@@ -240,7 +259,19 @@
 	 *  @return int   Number of images.
 	 */
 	function acadp_images_limit() {
-		var limit = $('#acadp-upload-image').attr('data-limit');
+		var limit = $('#acadp-upload-image-classi').attr('data-limit');
+
+		if (typeof limit !== typeof undefined && limit !== false) {
+			limit = parseInt(limit);
+		} else {
+			limit = parseInt(acadp.maximum_images_per_listing);
+		}
+
+		return limit;
+	}
+	//////////
+	function acadp_images_limit_imoveis() {
+		var limit = $('#acadp-upload-image-imoveis').attr('data-limit');
 
 		if (typeof limit !== typeof undefined && limit !== false) {
 			limit = parseInt(limit);
@@ -260,6 +291,10 @@
 	function acadp_images_uploaded_count() {
 		return $('.acadp-image-field').length;
 	}
+	/////////
+	function acadp_images_uploaded_count_imoveis() {
+		return $('.acadp-image-field-imoveis').length;
+	}
 
 	/**
 	 *  Enable or disable image upload
@@ -268,9 +303,17 @@
 	 */
 	function acadp_enable_disable_image_upload() {
 		if (acadp_can_upload_image()) {
-			$('#acadp-upload-image').removeAttr('disabled');
+			$('#acadp-upload-image-classi').removeAttr('disabled');
 		} else {
-			$('#acadp-upload-image').attr('disabled', 'disabled');
+			$('#acadp-upload-image-classi').attr('disabled', 'disabled');
+		};
+	}
+	////////
+	function acadp_enable_disable_image_upload_imoveis() {
+		if (acadp_can_upload_image_imoveis()) {
+			$('#acadp-upload-image-imoveis').removeAttr('disabled');
+		} else {
+			$('#acadp-upload-image-imoveis').attr('disabled', 'disabled');
 		};
 	}
 
@@ -400,16 +443,24 @@
 		});
 
 		// display the media uploader when "Upload Image" button clicked in the custom post type "acadp_listings"		
-		$('#acadp-upload-image').on('click', function (e) {
+		$('#acadp-upload-image-classi').on('click', function (e) {
 			e.preventDefault();
 
 			if (acadp_can_upload_image()) {
-				$('#acadp-upload-image-hidden').trigger('click');
+				$('#acadp-upload-image-hidden-classi').trigger('click');
+			};
+		});
+		/////////////
+		$('#acadp-upload-image-imoveis').on('click', function (e) {
+			e.preventDefault();
+
+			if (acadp_can_upload_image_imoveis()) {console.log('xxXXxx_2');
+				$('#acadp-upload-image-hidden-imoveis').trigger('click');
 			};
 		});
 
 		// upload image 
-		$("#acadp-upload-image-hidden").change(function () {
+		$("#acadp-upload-image-hidden-classi").change(function () {
 			var selected = $(this)[0].files.length;
 			if (!selected) return false;
 
@@ -421,7 +472,7 @@
 				return false;
 			};
 
-			$('#acadp-progress-image-upload').addClass('uploading').html('<div class="acadp-spinner"></div>');
+			$('#acadp-progress-image-upload-classi').addClass('uploading').html('<div class="acadp-spinner"></div>');
 			acadp_enable_disable_image_upload();
 
 			var options = {
@@ -429,7 +480,7 @@
 				url: acadp.ajax_url,
 				success: function (json, statusText, xhr, $form) {
 					// do extra stuff after submit
-					$('#acadp-progress-image-upload').removeClass('uploading').html('');
+					$('#acadp-progress-image-upload-classi').removeClass('uploading').html('');
 
 					$.each(json, function (key, value) {
 						if (!value['error']) {
@@ -443,7 +494,7 @@
 								'<a href="javascript:;" class="acadp-delete-image" data-attachment_id="' + value['id'] + '">' + acadp.delete_label + '</a>' +
 								'</td>' +
 								'</tr>';
-							$('#acadp-images').append(html);
+							$('#acadp-images-classi').append(html);
 						};
 					});
 
@@ -451,7 +502,7 @@
 					acadp_enable_disable_image_upload();
 				},
 				error: function (data) {
-					$('#acadp-progress-image-upload').removeClass('uploading').html('');
+					$('#acadp-progress-image-upload-classi').removeClass('uploading').html('');
 					acadp_enable_disable_image_upload();
 				}
 			};
@@ -459,12 +510,64 @@
 			// submit form using 'ajaxSubmit' 
 			$('#acadp-form-upload').ajaxSubmit(options);
 		});
+		//////////
+		$("#acadp-upload-image-hidden-imoveis").change(function () {
+			var selected = $(this)[0].files.length;
+			if (!selected) return false;
+
+			var limit = acadp_images_limit_imoveis();
+			var uploaded = acadp_images_uploaded_count_imoveis();
+			var remaining = limit - uploaded;
+			if (limit > 0 && selected > remaining) {
+				alert(acadp.upload_limit_alert_message.replace(/%d/gi, remaining));
+				return false;
+			};
+
+			$('#acadp-progress-image-upload-imoveis').addClass('uploading').html('<div class="acadp-spinner"></div>');
+			acadp_enable_disable_image_upload_imoveis();
+
+			var options = {
+				dataType: 'json',
+				url: acadp.ajax_url,
+				success: function (json, statusText, xhr, $form) {
+					// do extra stuff after submit
+					$('#acadp-progress-image-upload-imoveis').removeClass('uploading').html('');
+
+					$.each(json, function (key, value) {
+						if (!value['error']) {
+							var html = '<tr class="acadp-image-row">' +
+								'<td class="acadp-handle"><span class="glyphicon glyphicon-th-large"><i class="bi bi-chevron-bar-expand"></i></span></td>' +
+								'<td class="acadp-image">' +
+								'<img src="' + value['url'] + '" />' +
+								'<input type="hidden" class="acadp-image-field" name="images[]" value="' + value['id'] + '" />' +
+								'</td>' +
+								'<td>' +
+								'<a href="javascript:;" class="acadp-delete-image" data-attachment_id="' + value['id'] + '">' + acadp.delete_label + '</a>' +
+								'</td>' +
+								'</tr>';
+							$('#acadp-images-imoveis').append(html);
+						};
+					});
+
+					acadp_sort_images_imoveis();
+					acadp_enable_disable_image_upload_imoveis();
+				},
+				error: function (data) {
+					$('#acadp-progress-image-upload-imoveis').removeClass('uploading').html('');
+					acadp_enable_disable_image_upload_imoveis();
+				}
+			};
+
+			// submit form using 'ajaxSubmit'
+			$('#acadp-form-upload-imoveis').ajaxSubmit(options);
+		});
 
 		// make the isting images sortable in the custom post type "acadp_listings"
 		acadp_sort_images();
+		acadp_sort_images_imoveis();
 
 		// Delete the selected image when "Delete Permanently" button clicked in the custom post type "acadp_listings"	
-		$('#acadp-images').on('click', 'a.acadp-delete-image', function (e) {
+		$('#acadp-images-classi').on('click', 'a.acadp-delete-image', function (e) {
 			e.preventDefault();
 
 			var $this = $(this);
@@ -477,8 +580,26 @@
 
 			$.post(acadp.ajax_url, data, function (response) {
 				$this.closest('tr').remove();
-				$('#acadp-upload-image-hidden').val('');
+				$('#acadp-upload-image-hidden-classi').val('');
 				acadp_enable_disable_image_upload();
+			});
+		});
+		////////////
+		$('#acadp-images-imoveis').on('click', 'a.acadp-delete-image', function (e) {
+			e.preventDefault();
+
+			var $this = $(this);
+
+			var data = {
+				'action': 'acadp_public_delete_attachment_listings',
+				'attachment_id': $this.data('attachment_id'),
+				'security': acadp.ajax_nonce
+			};
+
+			$.post(acadp.ajax_url, data, function (response) {
+				$this.closest('tr').remove();
+				$('#acadp-upload-image-hidden-imoveis').val('');
+				acadp_enable_disable_image_upload_imoveis();
 			});
 		});
 

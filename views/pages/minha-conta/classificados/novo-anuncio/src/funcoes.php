@@ -5,21 +5,23 @@ function bs4t_aba_categorias($name, $excluir = [])
     $principais = [];
     $options = [];
 
-    $args =  array(
-        'taxonomy'                    => 'acadp_categories',
-        'hide_empty'                => false,
-        'update_term_meta_cache'    => false,
+    $args = array(
+        'taxonomy' => 'acadp_categories',
+        'hide_empty' => false,
+        'update_term_meta_cache' => false,
     );
 
     $todas_categorias = get_terms($args);
 
     foreach ($todas_categorias as $categoria) {
         if ($categoria->parent < 1) {
-            $principais[] =
-                [
-                    'id' => $categoria->term_id,
-                    'nome' => $categoria->name
-                ];
+            if ($categoria->term_id != 27) {
+                $principais[] =
+                    [
+                        'id' => $categoria->term_id,
+                        'nome' => $categoria->name
+                    ];
+            }
         }
     }
 
@@ -36,7 +38,7 @@ function bs4t_aba_categorias($name, $excluir = [])
             }
         }
     }
-?>
+    ?>
 
     <div class="row bg-white">
         <div class="col-6 col-lg-4">
@@ -61,11 +63,12 @@ function bs4t_aba_categorias($name, $excluir = [])
                 $abaAtiva = 'show active';
                 $idRadio = 0;
 
+
                 foreach ($options as $option) {
                     echo '<div class="tab-pane fade ' . $abaAtiva . ' py-2 categoria-novo-anunio" id="id' . $option['primario_id'] . '" role="tabpanel">';
-
-                    foreach ($option['secundario'] as $secundario) {
-                        echo '<label for="id-' . $idRadio . '" class="w-100 p-1 radio-categoria">
+                    if (!empty($option['secundario'])) {
+                        foreach ($option['secundario'] as $secundario) {
+                            echo '<label for="id-' . $idRadio . '" class="w-100 p-1 radio-categoria">
                         <input  type="radio" 
                                 style="display: none" 
                                 class="acadp-category-listing" 
@@ -75,11 +78,11 @@ function bs4t_aba_categorias($name, $excluir = [])
                                 data-exist="true" 
                                 required>
                         ' . $secundario['secundario_nome'] . '</label>';
-                        $idRadio++;
+                            $idRadio++;
+                        }
                     }
 
                     echo '</div>';
-
                     $abaAtiva = '';
                 }
                 ?>
@@ -87,5 +90,5 @@ function bs4t_aba_categorias($name, $excluir = [])
         </div>
     </div>
 
-<?php
+    <?php
 }

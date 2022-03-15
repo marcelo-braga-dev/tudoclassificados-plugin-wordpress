@@ -16,7 +16,6 @@ use TudoClassificados\App\Services\Shortcodes\Anuncios\AnunciosFavoritos;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\AnunciosUsuario;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\CustomFields\FieldsPadrao;
 use TudoClassificados\App\Services\Shortcodes\Anuncios\FormulariosCadastro\FormPadrao;
-use TudoClassificados\App\src\Anuncios\FormulariosCadastro\AnuncioPadrao;
 use TudoClassificados\App\src\Anuncios\Status\Deletar;
 use TudoClassificados\App\src\Anuncios\Status\RemoverFavoritos;
 use TudoClassificados\App\src\Anuncios\Status\Renovar;
@@ -83,8 +82,17 @@ class ACADP_Public_User
      */
     private function save_listing()
     {
-        $anuncio = new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\SalvarAnuncio();
-        $anuncio->execute();
+        if ($_POST['tipo-anuncio'] == 'classificados') {
+            $anuncio = new \TudoClassificados\App\src\Classificados\Produtos\SalvarAnuncio();
+            $anuncio->execute();
+            return;
+        }
+
+        if ($_POST['tipo-anuncio'] == 'imoveis') {
+            $anuncio = new \TudoClassificados\App\src\Anuncios\Imoveis\SalvarAnuncioImovel();
+            $anuncio->execute();
+            return;
+        }
     }
 
     /**
@@ -202,7 +210,7 @@ class ACADP_Public_User
      */
     public function ajax_callback_custom_fields($post_id = 0)
     {
-        $service =  new FieldsPadrao();
+        $service = new FieldsPadrao();
         $service->execute($post_id);
     }
 

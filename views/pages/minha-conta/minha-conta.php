@@ -168,13 +168,20 @@
                             Imóveis
                         </span>
                     </a>
-                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'imoveis-integrar-ingaia' ? 'show' : '' ?>"
+                    <div class="collapse <?= $abaMenu == 'imoveis' ||
+                    $abaMenu == 'imoveis-integrar-ingaia' || $abaMenu == 'novo-imovel' ? 'show' : '' ?>"
                          id="navbar-imoveis">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-imovel' ? 'active' : '' ?>"
                                    data-toggle="list"
-                                   href="#imoveis_anuncios" role="tab">
+                                   href="#novo-imovel" role="tab">
+                                    <span class="text-sub-menu">Cadastrar Anúncio</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
+                                   data-toggle="list" href="#imoveis_anuncios" role="tab">
                                     <span class="text-sub-menu">Anuncios de Imóveis</span>
                                 </a>
                             </li>
@@ -191,7 +198,7 @@
 
                 <li class="dropdown-divider pb-2"></li>
 
-                <!-- Imoveis -->
+                <!-- Comentarios -->
                 <li class="nav-item">
                     <a class="nav-link nav-lvl-1" href="#navbar-comentarios"
                        data-toggle="collapse" role="button"
@@ -308,6 +315,10 @@
                 </div>
 
                 <!-- Imoveis -->
+                <div class="tab-pane fade <?= $abaMenu == 'novo-imovel' ? 'active show' : '' ?>" id="novo-imovel"
+                     role="tabpanel">
+                    <?php include 'imoveis/novo/novo-anuncio.php'; ?>
+                </div>
                 <div class="tab-pane fade <?= $abaMenu == 'imoveis' ? 'active show' : '' ?>" id="imoveis_anuncios"
                      role="tabpanel">
                     <?php include 'imoveis/anuncios.php'; ?>
@@ -403,24 +414,13 @@ function bs4t_nav_minha_conta()
 
 add_action('wp_footer', 'bs4t_nav_minha_conta', 102);
 
+function bs4t_adicionando_script()
+{
+    ?>
+    <script src="<?= TUDOCLASSIFICADOS_URL_ASSETS ?>js/currency.js"></script>
+    <script src="<?= TUDOCLASSIFICADOS_URL_ASSETS ?>js/cidade-estado-select/main.js"></script>
+    <script src="<?= TUDOCLASSIFICADOS_URL_PLUGIN ?>views/pages/minha-conta/imoveis/novo/assets/principal.js"></script>
+    <?php
+}
 
-//function bs4t_integracao_ingaia()
-//{
-//    ?>
-<!--    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/imoveis/ingaia/principal.js"></script>-->
-<!--    --><?php
-//}
-//
-//add_action('wp_footer', 'bs4t_integracao_ingaia', 102);
-//?>
-<!---->
-<?php
-//function bs4t_salvar_resposta_comentario()
-//{
-//    ?>
-<!--    <script src="/wp-content/plugins/tudoclassificados/pages/minha-conta/assets/js/comentarios.js?id=--><? // //= uniqid() ?><!--"></script>-->
-<!--    --><?php
-//}
-//
-//add_action('wp_footer', 'bs4t_salvar_resposta_comentario', 102);
-//?>
+add_action('wp_footer', 'bs4t_adicionando_script', 101);

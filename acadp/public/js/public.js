@@ -391,7 +391,7 @@
 		var limit = acadp_images_limit();
 		var uploaded = acadp_images_uploaded_count();	
 		
-		if ( ( limit > 0 && uploaded >= limit ) || $( '#acadp-progress-image-upload' ).hasClass( 'uploading' ) ) {
+		if ( ( limit > 0 && uploaded >= limit ) || $( '#acadp-progress-image-upload-classi' ).hasClass( 'uploading' ) ) {
 			return false;
 		}
 		
@@ -603,7 +603,7 @@
 				return false;
 			};
 		
-			$( '#acadp-progress-image-upload' ).addClass( 'uploading' ).html( '<div class="acadp-spinner"></div>' );
+			$( '#acadp-progress-image-upload-classi' ).addClass( 'uploading' ).html( '<div class="acadp-spinner"></div>' );
 			acadp_enable_disable_image_upload();
 						
 			var options = {
@@ -611,7 +611,7 @@
 				url: acadp.ajax_url,
         		success: function( json, statusText, xhr, $form ) {
 					// do extra stuff after submit
-					$( '#acadp-progress-image-upload' ).removeClass( 'uploading' ).html( '' );
+					$( '#acadp-progress-image-upload-classi' ).removeClass( 'uploading' ).html( '' );
 					
 					$.each( json, function( key, value ) {							
 						if ( ! value['error'] ) {
@@ -634,7 +634,7 @@
 					acadp_enable_disable_image_upload();
 				},
 				error: function( data ) {
-					$( '#acadp-progress-image-upload' ).removeClass( 'uploading' ).html( '' );
+					$( '#acadp-progress-image-upload-classi' ).removeClass( 'uploading' ).html( '' );
 					acadp_enable_disable_image_upload();
 				}
     		}; 

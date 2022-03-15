@@ -2,7 +2,7 @@
 
 namespace TudoClassificados\App\src\Shortcodes;
 
-use TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\NovoAnuncio;
+use TudoClassificados\App\src\Shortcodes\Anuncios\NovoAnuncio;
 
 class Paginas
 {

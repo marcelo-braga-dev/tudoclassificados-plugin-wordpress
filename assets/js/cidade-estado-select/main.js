@@ -1,51 +1,51 @@
-(function() {
-    var selectEstados = $('#estados'),
-        selectCidades = $('#cidades');
+$(function () {
+    let selectEstadosClassi = $('.estados-classificados'),
+        selectCidadesClassi = $('.cidades-classificados');
 
-    var url = '/wp-content/plugins/tudoclassificados/assets/js/cidade-estado-select/db-estados-cidades.json';
-
-    preencheEstados();
-
-    function preencheEstados() {
-        $.getJSON(url, function(data) {
-            var options = "<option value=''>Selecione um estado</option>";
-
-            $.each(data.estados, function(key, val) {
-                options += "<option value='" + val.sigla + "'> " + val.nome + "</option>";
-            });
-
-            selectEstados.html(options);
-
-            selectEstados.on('change', function() {
-                preencheCidade(data);
-            });
-
-            cidadeAnuncio(data);
+    let selectEstadosImoveis = $('.estados-imoveis'),
+        selectCidadesImoveis = $('.cidades-imoveis');
 
 
+    let url = '/wp-content/plugins/tudoclassificados/assets/js/cidade-estado-select/db-estados-cidades.json';
+
+    $.getJSON(url, function (data) {
+        let options = "<option value=''>Selecione um estado</option>";
+
+        $.each(data.estados, function (key, val) {
+            options += "<option value='" + val.sigla + "'> " + val.nome + "</option>";
         });
-    }
 
-    function cidadeAnuncio(data) {
-        if (estado) {
+        selectEstadosClassi.html(options);
+        selectEstadosClassi.change( function () {
+            preencheCidade(data, selectEstadosClassi, selectCidadesClassi);
+        });
 
-            selectEstados.val(estado).select2();
-            preencheCidade(data);
-            selectCidades.val(cidade).select2();
-        }
-    }
+        selectEstadosImoveis.html(options);
+        selectEstadosImoveis.change( function () {
+            preencheCidade(data, selectEstadosImoveis, selectCidadesImoveis);
+        });
+    });
 
-
-    function preencheCidade(data) {
-        var estado = data.estados.find(function(estado) {
+    function preencheCidade(data, selectEstados, selectCidades) {
+        let estado = data.estados.find(function (estado) {
             return selectEstados.val() === estado.sigla;
-        })
-        var options = "<option value=''>Selecione uma cidade</option>";
-        $.each(estado.cidades, function(key, val) {
+        });
+
+        let options = "<option value=''>Selecione uma cidade</option>";
+
+        $.each(estado.cidades, function (key, val) {
             options += "<option value='" + val + "'> " + val + "</option>";
         });
+
         selectCidades.html(options);
         $('.cidade-select').show();
     }
 
-})();
+    // function cidadeAnuncio(data) {
+    //     if (estado) {
+    //         selectEstadosClassi.val(estado).select2();
+    //         preencheCidade(data);
+    //         selectCidadesClassi.val(cidade).select2();
+    //     }
+    // }
+});
