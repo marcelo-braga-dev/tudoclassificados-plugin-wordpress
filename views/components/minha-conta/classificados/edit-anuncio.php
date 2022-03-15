@@ -19,19 +19,6 @@
                         <?php the_acadp_listing_labels($post_meta); ?>
                     </div>
 
-                    <?php if ($post->post_status == 'sem_imagens') : ?>
-                        <div class="row alert alert-danger">
-                            <div class="col-auto align-items-center">
-                                <h4><i class="bi bi-exclamation-diamond" style="font-size: 22px;"></i></h4>
-                            </div>
-                            <div class="col-auto">
-                                <span><b>Anúncio não publicado por falta de imagens.</b></span><br>
-                                <small class="text-white">Insira imagens nesse anúncio, clicando no botão
-                                    editar.</small>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
                     <small class="text-muted d-block">
                         <?php printf(esc_html__('Posted %s ago', 'advanced-classifieds-and-directory-pro'), human_time_diff(get_the_time('U'), current_time('timestamp'))); ?>
                     </small>
@@ -119,20 +106,23 @@
                                     // printf('<a href="%s" class="btn btn-primary btn-sm btn-block">%s</a>', esc_url(acadp_get_listing_promote_page_link($post->ID)), esc_html__('Promote', 'advanced-classifieds-and-directory-pro'));
                                     if ($post_meta['featured'][0]) {
                                         echo '<button class="btn btn-success">Promover</button>';
-                                    } else {
                                     }
                                 }
                             }
                             ?>
 
                             <?php if ($can_edit) : ?>
-                                <a href="<?php echo esc_url(acadp_get_listing_edit_page_link($post->ID)); ?>"
-                                   class="btn btn-success">
-                                    <i class="fas fa-pencil"></i>
-                                </a>
+                                <form action="">
+                                    <input type="hidden" name="id_anuncio" value="<?= $post->ID ?>">
+                                    <input type="hidden" name="edit-anuncio" value="classificados">
+                                    <input type="hidden" name="aba_minha_conta" value="editar-classificado">
+                                    <button type="submit" class="btn btn-success rounded">
+                                        <i class="fas fa-pencil"></i>
+                                    </button>
+                                </form>
                             <?php endif; ?>
-                            <a href="<?php echo esc_url(acadp_get_listing_delete_page_link($post->ID)); ?>"
-                               class="btn btn-danger"
+                            <a href="<?= esc_url(acadp_get_listing_delete_page_link($post->ID)); ?>"
+                               class="btn btn-danger rounded"
                                onclick="return confirm( '<?php esc_attr_e('Are you sure you want to delete this listing?', 'advanced-classifieds-and-directory-pro'); ?>' );">
                                 <i class="fas fa-trash"></i>
                             </a>

@@ -12,7 +12,7 @@ class FormPadrao
 
         $post_id = 'edit' == get_query_var('acadp_action') ? get_query_var('acadp_listing', 0) : 0;
         $has_permission = true;
-
+        $post_id = 23240;
         if ($post_id > 0) {
             if (!acadp_current_user_can('edit_acadp_listing', $post_id)) {
                 $has_permission = false;
@@ -99,6 +99,6 @@ class FormPadrao
         ob_start();
         include(acadp_get_template("user/acadp-public-edit-listing-display.php"));
         wp_reset_postdata();
-        return 'ob_get_clean()';
+        return 'ob_get_clean()X';
     }
 }

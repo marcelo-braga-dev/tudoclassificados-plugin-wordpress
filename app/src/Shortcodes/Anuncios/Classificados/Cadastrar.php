@@ -10,9 +10,9 @@ class Cadastrar
             return acadp_login_form();
         }
 
-        $post_id = 'edit' == get_query_var('acadp_action') ? get_query_var('acadp_listing', 0) : 0;
-        $has_permission = true;
+        $post_id = $_GET['edit-anuncio'] == 'classificados' ? $_GET['id_anuncio'] : 0;
 
+        $has_permission = true;
         if ($post_id > 0) {
             if (!acadp_current_user_can('edit_acadp_listing', $post_id)) {
                 $has_permission = false;

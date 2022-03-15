@@ -65,12 +65,13 @@
                         </span>
                     </a>
                     <div class="collapse
-                        <?= $abaMenu == 'classificados' || $abaMenu == 'classificados-integrar-bling' ? 'show' : '' ?>"
+                        <?= $abaMenu == 'classificados' || $abaMenu == 'classificados-integrar-bling' ||
+                            $abaMenu == 'novo-classificado' || $abaMenu == 'editar-classificado' ? 'show' : '' ?>"
                          id="navbar-classificados">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-classificados' ? 'active' : '' ?>"
-                                   data-toggle="list" href="#novo-classificados" role="tab">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-classificado' ? 'active' : '' ?>"
+                                   data-toggle="list" href="#novo-classificado" role="tab">
                                     <span class="text-sub-menu">Novo Anúncio</span>
                                 </a>
                             </li>
@@ -99,9 +100,7 @@
                        data-toggle="collapse" role="button"
                        aria-expanded="false" aria-controls="navbar-marketplace">
                         <i class="fas fa-store"></i>
-                        <span class="ml-2">
-                            Marketplace
-                        </span>
+                        <span class="ml-2">Marketplace</span>
                     </a>
                     <div class="collapse <?= $abaMenu == 'marketplace' || $abaMenu == 'marketplace-integrar-bling' ? 'show' : '' ?>"
                          id="navbar-marketplace">
@@ -118,6 +117,46 @@
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#marketplace_integrar" role="tab">
                                     <span class="text-sub-menu">Integrar com Bling</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="dropdown-divider pb-2"></li>
+
+                <!-- Imoveis -->
+                <li class="nav-item">
+                    <a class="nav-link nav-lvl-1" href="#navbar-imoveis"
+                       data-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="navbar-imoveis">
+                        <i class="fas fa-home"></i>
+                        <span class="ml-2">
+                            Imóveis
+                        </span>
+                    </a>
+                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'editar-imoveis' ||
+                    $abaMenu == 'imoveis-integrar-ingaia' || $abaMenu == 'novo-imovel' ? 'show' : '' ?>"
+                         id="navbar-imoveis">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-imovel' ? 'active' : '' ?>"
+                                   data-toggle="list"
+                                   href="#novo-imovel" role="tab">
+                                    <span class="text-sub-menu">Cadastrar Anúncio</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
+                                   data-toggle="list" href="#imoveis_anuncios" role="tab">
+                                    <span class="text-sub-menu">Anuncios de Imóveis</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
+                                   id="classificados-integrar-tab" data-toggle="list"
+                                   href="#imoveis_ingaia" role="tab">
+                                    <span class="text-sub-menu">Integrar com inGaia</span>
                                 </a>
                             </li>
                         </ul>
@@ -150,46 +189,6 @@
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#filiado_bling" role="tab">
                                     <span class="text-sub-menu">Integrar com Bling</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="dropdown-divider pb-2"></li>
-
-                <!-- Imoveis -->
-                <li class="nav-item">
-                    <a class="nav-link nav-lvl-1" href="#navbar-imoveis"
-                       data-toggle="collapse" role="button"
-                       aria-expanded="false" aria-controls="navbar-imoveis">
-                        <i class="fas fa-home"></i>
-                        <span class="ml-2">
-                            Imóveis
-                        </span>
-                    </a>
-                    <div class="collapse <?= $abaMenu == 'imoveis' ||
-                    $abaMenu == 'imoveis-integrar-ingaia' || $abaMenu == 'novo-imovel' ? 'show' : '' ?>"
-                         id="navbar-imoveis">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-imovel' ? 'active' : '' ?>"
-                                   data-toggle="list"
-                                   href="#novo-imovel" role="tab">
-                                    <span class="text-sub-menu">Cadastrar Anúncio</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
-                                   data-toggle="list" href="#imoveis_anuncios" role="tab">
-                                    <span class="text-sub-menu">Anuncios de Imóveis</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
-                                   id="classificados-integrar-tab" data-toggle="list"
-                                   href="#imoveis_ingaia" role="tab">
-                                    <span class="text-sub-menu">Integrar com inGaia</span>
                                 </a>
                             </li>
                         </ul>
@@ -282,8 +281,8 @@
                 </div>
 
                 <!-- Anuncios Classificados -->
-                <div class="tab-pane fade <?= $abaMenu == 'classificados' ? 'active show' : '' ?>"
-                     id="novo-classificados" role="tabpanel">
+                <div class="tab-pane fade <?= $abaMenu == 'novo-classificado' || $abaMenu == 'editar-classificado' ? 'active show' : '' ?>"
+                     id="novo-classificado" role="tabpanel">
                     <?php include 'classificados/novo-anuncio/novo-anuncio.php' ?>
                 </div>
                 <div class="tab-pane fade <?= $abaMenu == 'classificados' ? 'active show' : '' ?>"
@@ -315,7 +314,7 @@
                 </div>
 
                 <!-- Imoveis -->
-                <div class="tab-pane fade <?= $abaMenu == 'novo-imovel' ? 'active show' : '' ?>" id="novo-imovel"
+                <div class="tab-pane fade <?= $abaMenu == 'novo-imovel' || $abaMenu == 'editar-imoveis' ? 'active show' : '' ?>" id="novo-imovel"
                      role="tabpanel">
                     <?php include 'imoveis/novo/novo-anuncio.php'; ?>
                 </div>

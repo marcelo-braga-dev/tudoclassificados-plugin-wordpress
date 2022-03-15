@@ -100,10 +100,14 @@
                             ?>
 
                             <?php if ($can_edit) : ?>
-                                <a href="<?php echo esc_url(acadp_get_listing_edit_page_link($post->ID)); ?>"
-                                   class="btn btn-success">
-                                    <i class="fas fa-pencil"></i>
-                                </a>
+                                <form action="">
+                                    <input type="hidden" name="id_anuncio" value="<?= $post->ID ?>">
+                                    <input type="hidden" name="edit-anuncio" value="imoveis">
+                                    <input type="hidden" name="aba_minha_conta" value="editar-imoveis">
+                                    <button type="submit" class="btn btn-success rounded">
+                                        <i class="fas fa-pencil"></i>
+                                    </button>
+                                </form>
                             <?php endif; ?>
                             <a href="<?php echo esc_url(acadp_get_listing_delete_page_link($post->ID)); ?>"
                                class="btn btn-danger"

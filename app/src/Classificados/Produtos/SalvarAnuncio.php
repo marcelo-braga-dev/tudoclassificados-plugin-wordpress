@@ -175,8 +175,7 @@ class SalvarAnuncio
                 $freteGratis = sanitize_text_field($_POST['frete-gratis']);
                 update_post_meta($post_id, 'frete_gratis', $freteGratis);
 
-                session_start();
-                $_SESSION['novo-anuncio'] = true;
+                session('aba_minha_conta', 'classificados');
             }
 
             if (!empty($general_settings['has_price'])) {

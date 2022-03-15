@@ -10,7 +10,7 @@ class CadastrarImovel
             return acadp_login_form();
         }
 
-        $post_id = 'edit' == get_query_var('acadp_action') ? get_query_var('acadp_listing', 0) : 0;
+        $post_id = $_GET['edit-anuncio'] == 'imoveis' ? $_GET['id_anuncio'] : 0;
         $has_permission = true;
 
         if ($post_id > 0) {
