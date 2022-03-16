@@ -1,10 +1,10 @@
 <?php
 
-namespace TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates;
+namespace TudoClassificados\App\Views\Pages\Classificados\Anuncios;
 
 use WP_Query;
 
-class AnuncioUnicoClassificados
+class Show
 {
     public function execute($post, $content)
     {
@@ -123,9 +123,8 @@ class AnuncioUnicoClassificados
             }
         }
 
-        // Process output
         ob_start();
-        include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/anuncio_unico/classificados/index.php';
+        include_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/classificados/show/pagina.php';
         return ob_get_clean();
     }
 }

@@ -6,27 +6,7 @@ if ($tipo == 'filiado') :
 elseif ($tipo == 'marketplace') :
     include TUDOCLASSIFICADOS_PATH . 'views/pages/anuncio_unico/area-precos/marketplace.php';
 else :
-    function MontarLink($texto)
-    {
-        if (!is_string($texto))
-            return $texto;
 
-        $er = "/(https:\/\/(www\.|.*?\/)?|http:\/\/(www\.|.*?\/)?|www\.)([a-zA-Z0-9]+|_|-)+(\.(([0-9a-zA-Z]|-|_|\/|\?|=|&)+))+/i";
-
-        $texto = preg_replace_callback($er, function ($match) {
-            $link = $match[0];
-
-            //coloca o 'http://' caso o link não o possua
-            $link = (stristr($link, "https") === false && stristr($link, "http") === false) ? "https://" . $link : $link;
-
-            //troca "&" por "&", tornando o link válido pela W3C
-            $link = str_replace("&", "&amp;", $link);
-
-            return strtolower($link);
-        }, $texto);
-
-        return $texto;
-    }
 
     ?>
 
@@ -82,7 +62,7 @@ else :
 
         <!-- SITE EXTERNO -->
         <?php if ($post_meta['website'][0]) : ?>
-            <a href="<?= MontarLink($post_meta['website'][0]) ?>" target="_blank" style="text-decoration:none;">
+            <a href="<?= converter_link($post_meta['website'][0]) ?>" target="_blank" style="text-decoration:none;">
                 <div class="row rounded align-items-center mx-2 mb-4 text-center btn-info">
                     <div class="col-2 p-2 m-0 rounded-left text-white" style="background: rgba(0,0,0,0.1);">
                         <i class="bi bi-box-arrow-up-right" style="font-size: 24px;"></i>

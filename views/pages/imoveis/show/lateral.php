@@ -1,4 +1,3 @@
-
 <div class="card m-0 p-3 mb-4">
     <?php if (is_user_logged_in()) : ?>
         <div class="row justify-content-center mb-3 px-3">

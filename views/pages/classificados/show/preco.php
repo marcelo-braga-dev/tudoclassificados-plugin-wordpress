@@ -10,7 +10,7 @@
         </small>
         <span class="d-block titulo-anuncio">
             <?php echo esc_html($post->post_title); ?>
-         </span>
+        </span>
     </div>
     <div class="d-block mb-0">
         <?php the_acadp_listing_labels($post_meta); ?>
@@ -53,20 +53,21 @@
         <a href="<?= converter_link($post_meta['website'][0]) ?>" target="_blank" style="text-decoration:none;">
             <div class="row rounded align-items-center mx-2 mb-4 text-center btn-info">
                 <div class="col-2 p-2 m-0 rounded-left text-white" style="background: rgba(0,0,0,0.1);">
-                    <i class="fas fa-external-link" style="font-size: 24px;"></i>
+                    <i class="bi bi-box-arrow-up-right" style="font-size: 24px;"></i>
                 </div>
                 <div class="col-10 rounded-right text-white text-truncate">
-                    <span style="font-size: 16px;">VISITAR SITE DO ANÚNCIO</span>
+                    <span style="font-size: 16px;">IR PARA O SITE DE VENDA</span>
                 </div>
             </div>
         </a>
-    <?php endif; ?>
-
+    <?php endif ?>
 
     <div class="d-block mb-2">
         <small>
-            Anunciado
-            por <?php echo '<a href="' . esc_url(acadp_get_user_page_link($post->post_author)) . '" style="color: #1e4b75">' . get_the_author() . '</a>'; ?>
+            Anunciado por
+            <a href="<?= esc_url(acadp_get_user_page_link($post->post_author)) ?>" style="color: #1e4b75">
+                <?= get_the_author() ?>
+            </a>
         </small>
     </div>
 </div>

@@ -1,14 +1,19 @@
 <div class="acadp acadp-user acadp-manage-listings acadp-list-view">
-    <!-- the loop -->
-    <?php while ($acadp_query->have_posts()) :
+    <?php
+    if (!$acadp_query->post_count) {
+        echo '<div class="text-center">Não há anúncios cadastrados</div>';
+    }
+
+    while ($acadp_query->have_posts()) :
         $acadp_query->the_post();
         $post_meta = get_post_meta($post->ID);
         ?>
         <div class="card mb-3">
             <div class="row p-3">
                 <div class="col-md-3">
-                    <a href="<?php the_permalink(); ?>"><img src="<?php the_acadp_listing_thumbnail($post_meta); ?>"
-                                                             class="rounded"> </a>
+                    <a href="<?php the_permalink(); ?>">
+                        <img src="<?php the_acadp_listing_thumbnail($post_meta); ?>" class="rounded">
+                    </a>
                 </div>
 
                 <div class=" col-md-6">

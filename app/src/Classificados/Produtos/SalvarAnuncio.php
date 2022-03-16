@@ -31,11 +31,6 @@ class SalvarAnuncio
             }
         }
 
-        if (isset($_POST['action']) && __('Save Draft', 'advanced-classifieds-and-directory-pro') == $_POST['action']) {
-            $post_status = 'draft';
-            $is_initial_submission = 0;
-        }
-
         // Add the content of the form to $post as an array
         $post_array = array(
             'post_title' => wp_strip_all_tags($_POST['title']),
@@ -124,59 +119,59 @@ class SalvarAnuncio
             }
 
             // insert contact details
-            if (!empty($general_settings['has_location'])) {
-                $address = sanitize_textarea_field($_POST['address']);
-                update_post_meta($post_id, 'address', $address);
 
-                wp_set_object_terms($post_id, (int)$_POST['acadp_location'], 'acadp_locations');
+            $address = sanitize_textarea_field($_POST['address']);
+            update_post_meta($post_id, 'address', $address);
 
-                update_post_meta($post_id, 'tipo', 'classificados');
+            wp_set_object_terms($post_id, (int)$_POST['acadp_location'], 'acadp_locations');
 
-                $zipcode = sanitize_text_field($_POST['zipcode']);
-                update_post_meta($post_id, 'zipcode', $zipcode);
+            update_post_meta($post_id, 'tipo', 'classificados');
 
-                $phone = sanitize_text_field($_POST['phone']);
-                update_post_meta($post_id, 'phone', $phone);
+            $zipcode = sanitize_text_field($_POST['zipcode']);
+            update_post_meta($post_id, 'zipcode', $zipcode);
 
-                $email = sanitize_email($_POST['email']);
-                update_post_meta($post_id, 'email', $email);
+            $phone = sanitize_text_field($_POST['phone']);
+            update_post_meta($post_id, 'phone', $phone);
 
-                $website = esc_url_raw($_POST['website']);
-                update_post_meta($post_id, 'website', $website);
+            $email = sanitize_email($_POST['email']);
+            update_post_meta($post_id, 'email', $email);
 
-                $latitude = isset($_POST['latitude']) ? sanitize_text_field($_POST['latitude']) : '';
-                update_post_meta($post_id, 'latitude', $latitude);
+            $website = esc_url_raw($_POST['website']);
+            update_post_meta($post_id, 'website', $website);
 
-                $longitude = isset($_POST['longitude']) ? sanitize_text_field($_POST['longitude']) : '';
-                update_post_meta($post_id, 'longitude', $longitude);
+            $latitude = isset($_POST['latitude']) ? sanitize_text_field($_POST['latitude']) : '';
+            update_post_meta($post_id, 'latitude', $latitude);
 
-                $hide_map = isset($_POST['hide_map']) ? (int)$_POST['hide_map'] : 0;
-                update_post_meta($post_id, 'hide_map', $hide_map);
+            $longitude = isset($_POST['longitude']) ? sanitize_text_field($_POST['longitude']) : '';
+            update_post_meta($post_id, 'longitude', $longitude);
 
-                $cidade = sanitize_text_field($_POST['cidade']);
-                update_post_meta($post_id, 'cidade', $cidade);
+            $hide_map = isset($_POST['hide_map']) ? (int)$_POST['hide_map'] : 0;
+            update_post_meta($post_id, 'hide_map', $hide_map);
 
-                $estado = sanitize_text_field($_POST['estado']);
-                update_post_meta($post_id, 'estado', $estado);
+            $cidade = sanitize_text_field($_POST['cidade']);
+            update_post_meta($post_id, 'cidade', $cidade);
 
-                // Dimensionamento
-                $altura = sanitize_text_field($_POST['altura']);
-                update_post_meta($post_id, 'altura', $altura);
+            $estado = sanitize_text_field($_POST['estado']);
+            update_post_meta($post_id, 'estado', $estado);
 
-                $largura = sanitize_text_field($_POST['largura']);
-                update_post_meta($post_id, 'largura', $largura);
+            // Dimensionamento
+            $altura = sanitize_text_field($_POST['altura']);
+            update_post_meta($post_id, 'altura', $altura);
 
-                $comprimento = sanitize_text_field($_POST['comprimento']);
-                update_post_meta($post_id, 'comprimento', $comprimento);
+            $largura = sanitize_text_field($_POST['largura']);
+            update_post_meta($post_id, 'largura', $largura);
 
-                $peso = sanitize_text_field($_POST['peso']);
-                update_post_meta($post_id, 'peso', $peso);
+            $comprimento = sanitize_text_field($_POST['comprimento']);
+            update_post_meta($post_id, 'comprimento', $comprimento);
 
-                $freteGratis = sanitize_text_field($_POST['frete-gratis']);
-                update_post_meta($post_id, 'frete_gratis', $freteGratis);
+            $peso = sanitize_text_field($_POST['peso']);
+            update_post_meta($post_id, 'peso', $peso);
 
-                session('aba_minha_conta', 'classificados');
-            }
+            $freteGratis = sanitize_text_field($_POST['frete-gratis']);
+            update_post_meta($post_id, 'frete_gratis', $freteGratis);
+
+            session('aba_minha_conta', 'classificados');
+
 
             if (!empty($general_settings['has_price'])) {
                 $price = acadp_sanitize_amount($_POST['price']);

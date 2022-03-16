@@ -6,7 +6,6 @@ new \TudoClassificados\App\src\Shortcodes\Widgets();
 
 //
 new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\Grid();
-new \TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates\ListaAnuncios();
 
 
 

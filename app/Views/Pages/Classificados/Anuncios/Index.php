@@ -1,19 +1,13 @@
 <?php
-namespace TudoClassificados\App\src\Shortcodes\Anuncios\Classificados\Templates;
+
+namespace TudoClassificados\App\Views\Pages\Classificados\Anuncios;
 
 use WP_Query;
 
-class ListaAnuncios
+class Index
 {
-    public function __construct()
-    {
-        add_shortcode("tc_lista_anuncios_classificados", array($this, "run_shortcode_lista_anuncios_classificados"));
-    }
-
     public function run_shortcode_lista_anuncios_classificados($atts)
     {
-        $term_slug = 'classificados';
-
         $listings_settings = get_option('acadp_listings_settings');
 
         $atts = shortcode_atts(array(
@@ -27,24 +21,15 @@ class ListaAnuncios
             'header' => 1
         ), $atts);
 
-        $args = array(
-            'post_type' => 'acadp_listings',
-            'post_status' => 'publish',
-            'posts_per_page' => (int)$atts['listings_per_page'],
-            'paged' => acadp_get_page_number(),
-        );
 
         $tax_queries = array();
-
-        $tax_queries[] = array(
-            'taxonomy' => 'acadp_categories',
-            'field' => 'slug',
-            'terms' => $term_slug,
-            'include_children' => isset($listings_settings['include_results_from']) && in_array('child_categories', $listings_settings['include_results_from']) ? true : false,
-        );
-
-        $args['tax_query'] = (count($tax_queries) > 1) ? array_merge(array('relation' => 'AND'), $tax_queries) : $tax_queries;
-
+        // $term_slug = 'classificados';
+        // $tax_queries[] = array(
+        //     'taxonomy' => 'acadp_categories',
+        //     'field' => 'slug',
+        //     'terms' => $term_slug,
+        //     'include_children' => isset($listings_settings['include_results_from']) && in_array('child_categories', $listings_settings['include_results_from']) ? true : false,
+        // );
 
         $featured_listing_settings = get_option('acadp_featured_listing_settings');
         $has_featured = apply_filters('acadp_has_featured', empty($featured_listing_settings['enabled']) ? false : true);
@@ -70,6 +55,21 @@ class ListaAnuncios
             }
         }
 
+        $meta_queries['tipo'] = array(
+            'key' => 'tipo',
+            'value' => 'classificados',
+            'compare' => '='
+        );
+
+        $args = array(
+            'post_type' => 'acadp_listings',
+            'post_status' => 'publish',
+            'posts_per_page' => (int)$atts['listings_per_page'],
+            'paged' => acadp_get_page_number(),
+        );
+
+        $args['tax_query'] = (count($tax_queries) > 1) ? array_merge(array('relation' => 'AND'), $tax_queries) : $tax_queries;
+
         $args = $this->getArgs($atts, $has_featured, $args, $meta_queries);
 
         $args = apply_filters('acadp_query_args', $args);
@@ -81,11 +81,11 @@ class ListaAnuncios
         // Process output
         if ($acadp_query->have_posts()) {
             ob_start();
-            require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/lista-anuncios/index.php';
+            require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/classificados/index/pagina.php';
             return ob_get_clean();
         }
 
-        return '<span>' . __('No Results Found.', 'advanced-classifieds-and-directory-pro') . '</span>';
+        return '<div class="text-center">Não há anúncios cadastrados</div>';
     }
 
     private function getArgs(array $atts, $has_featured, array $args, array $meta_queries): array

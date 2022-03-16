@@ -17,7 +17,7 @@ class AnuncioUnico
             $tipo = $postMeta['tipo'][0];
 
             if ($tipo == 'classificados') {
-                $anuncio = new AnuncioUnicoClassificados();
+                $anuncio = new \TudoClassificados\App\Views\Pages\Classificados\Anuncios\Show();
                 return $anuncio->execute($post, $content);
             }
 

@@ -160,7 +160,25 @@ function is_imovel()
     return $resposta;
 }
 
+function converter_link($texto)
+{
+    if (!is_string($texto))
+        return $texto;
 
+    $er = "/(https:\/\/(www\.|.*?\/)?|http:\/\/(www\.|.*?\/)?|www\.)([a-zA-Z0-9]+|_|-)+(\.(([0-9a-zA-Z]|-|_|\/|\?|=|&)+))+/i";
 
-return;
+    $texto = preg_replace_callback($er, function ($match) {
+        $link = $match[0];
+
+        //coloca o 'http://' caso o link não o possua
+        $link = (stristr($link, "https") === false && stristr($link, "http") === false) ? "https://" . $link : $link;
+
+        //troca "&" por "&", tornando o link válido pela W3C
+        $link = str_replace("&", "&amp;", $link);
+
+        return strtolower($link);
+    }, $texto);
+
+    return $texto;
+}
 ?>

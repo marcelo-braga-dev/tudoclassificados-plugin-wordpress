@@ -13,4 +13,3 @@ function tc_script_main()
 }
 
 add_action('wp_enqueue_scripts', 'tc_script_main');
-?>

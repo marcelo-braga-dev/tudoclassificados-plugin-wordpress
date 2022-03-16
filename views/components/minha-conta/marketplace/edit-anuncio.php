@@ -1,6 +1,11 @@
 <div class="acadp acadp-user acadp-manage-listings acadp-list-view">
     <!-- the loop -->
-    <?php while ($acadp_query->have_posts()) :
+    <?php
+    if (!$acadp_query->post_count) {
+        echo '<div class="text-center">Não há anúncios cadastrados</div>';
+    }
+
+    while ($acadp_query->have_posts()) :
         $acadp_query->the_post();
         $post_meta = get_post_meta($post->ID);
         ?>

@@ -1,31 +1,19 @@
+<div class="col-12">
+    <ins style="display: none" class="adsbygoogle" data-ad-client="ca-pub-5788964970631749"
+         data-ad-slot="1820744055" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
 <?php
-include_once 'funcoes.php';
-
 while ($acadp_query->have_posts()) :
     $acadp_query->the_post();
     $post_meta = get_post_meta($post->ID);
-?>
-    <?php
-    $qtd_anuncios++;
-
-    if ($qtd_anuncios == 1) {
-
-        if ('/categorias/imoveis/' == $_SERVER['REQUEST_URI']) : ?>
-            <a href="https://quin.to/drhpia?codigo=bpmGN">
-                <img src="/wp-content/uploads/2021/11/banner-quinto-andar.jpg">
-            </a>
-        <?php else : ?>
-            <div class="col-12">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5788964970631749" data-ad-slot="1820744055" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-    <?php endif;
-    } ?>
+    ?>
 
     <div class="row my-4 m-2 border rounded shadow-sm bg-white ">
-        <div class="col-md-4 rounded" style="background: url('<?php the_acadp_listing_thumbnail($post_meta) ?>'); background-size: cover; background-position: center; ">
+        <div class="col-md-4 rounded"
+             style="background: url('<?php the_acadp_listing_thumbnail($post_meta) ?>'); background-size: cover; background-position: center; ">
             <a href="<?php the_permalink(); ?>">
                 <div class="p-5"></div>
                 <div class="p-5"></div>
@@ -47,8 +35,8 @@ while ($acadp_query->have_posts()) :
             <div class="acadp-listings-title-block mb-3 w-100">
                 <small class="d-block text-muted">
                     <?= esc_html($category->name) ?>
-                    <?php if ($post_meta['price'][0]) echo '| Venda'; ?>XxX
-                    <?php if ($post_meta['preco_aluguel'][0]) echo '| Aluga'; ?>
+                    <?php //if ($post_meta['price'][0]) echo '| Venda'; ?>
+                    <?php //if ($post_meta['preco_aluguel'][0]) echo '| Aluga'; ?>
                 </small>
                 <span class="font-weight-lightx">
                     <a class="titulo-anuncio" href="<?php the_permalink(); ?>">
@@ -59,11 +47,8 @@ while ($acadp_query->have_posts()) :
                 <?php the_acadp_listing_labels($post_meta); ?>
                 <?php if ($post_meta['cidade'][0] && $post_meta['estado'][0]) : ?>
                     <div class="w-100"></div>
-                    <small><?= $post_meta['cidade'][0] . ' - ' . $post_meta['estado'][0]  ?></small>
+                    <small><?= $post_meta['cidade'][0] . ' - ' . $post_meta['estado'][0] ?></small>
                 <?php endif; ?>
-                <div class="row mt-1">
-                    <?php icones_anuncio_imoveis($post_meta) ?>
-                </div>
 
             </div>
             <!-- PRECO -->
@@ -91,12 +76,12 @@ while ($acadp_query->have_posts()) :
                     </div>
                 </div>
             </div>
-            <!-- SELLER -->
+
             <div class="col-auto w-100 text-muted" style="font-size: 12px">
                 <span>Anunciado por </span>
-                <a style="text-decoration: none; color: var(--principal)" href="<?= esc_url(acadp_get_user_page_link($post->post_author)) ?>"><?= get_the_author() ?></a>
+                <a style="text-decoration: none; color: var(--principal)"
+                   href="<?= esc_url(acadp_get_user_page_link($post->post_author)) ?>"><?= get_the_author() ?></a>
             </div>
-            <!-- CATEGORIA -->
         </div>
     </div>
 <?php endwhile; ?>
