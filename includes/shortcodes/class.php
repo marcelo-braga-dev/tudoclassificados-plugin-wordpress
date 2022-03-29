@@ -14,4 +14,3 @@ require_once TUDOCLASSIFICADOS_PATH . 'includes/classes/Anuncios/Templates/Marke
 
 new TudoClassificados\App\Views\Pages\Imoveis\Anuncios\Index;
 new Cards();
-new ListaAnunciosMarketplace();
