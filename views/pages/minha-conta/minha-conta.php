@@ -93,9 +93,14 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-bling' ? 'active' : '' ?>"
-                                   id="classificados-integrar-tab" data-toggle="list"
-                                   href="#marketplace_integrar" role="tab">
+                                   data-toggle="list" href="#marketplace_integrar" role="tab">
                                     <span class="text-sub-menu">Integrar com Bling</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-mercadopago' ? 'active' : '' ?>"
+                                   data-toggle="list" href="#marketplace_integrar_mercadopago" role="tab">
+                                    <span class="text-sub-menu">Conta Mercado Pago</span>
                                 </a>
                             </li>
                         </ul>
@@ -281,6 +286,10 @@
                 <div class="tab-pane fade <?= $abaMenu == 'marketplace-integrar-bling' ? 'active show' : '' ?>"
                      id="marketplace_integrar" role="tabpanel">
                     <?php include 'marketplace/integracao/bling/index.php' ?>
+                </div>
+                <div class="tab-pane fade <?= $abaMenu == 'marketplace-integrar-mercadopago' ? 'active show' : '' ?>"
+                     id="marketplace_integrar_mercadopago" role="tabpanel">
+                    <?php include 'marketplace/integracao/mercadopago/pagina.php' ?>
                 </div>
 
                 <!-- Afiliado -->

@@ -131,12 +131,6 @@ else :
                 <?php endif ?>
             <?php endif ?>
 
-            <!-- Checkout Pro -->
-            <?php
-            if ($category->parent != get_id_categoria_imoveis()) :
-                require_once TUDOCLASSIFICADOS_PATH . 'app/src/Integracoes/MercadoPago/checkout-marktplace.php';
-            endif; ?>
-
         <?php endif ?>
 
 

@@ -1,14 +1,3 @@
-<?php
-$post = get_post($_GET['id']);
-$post_meta = get_post_meta($_GET['id']);
-
-if ($post->post_type != 'acadp_listings' || $post->post_status != 'publish') return;
-
-$valorTotal = tc_converter_money_float($post_meta['price'][0]) + tc_converter_money_float($_GET['frete_valor']);
-$valorTotal = tc_converter_float_money($valorTotal);
-
-?>
-
 <div class="row my-3">
     <div class="col-md-8">
         <!-- Dados Comprador -->
@@ -16,7 +5,7 @@ $valorTotal = tc_converter_float_money($valorTotal);
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Dados do Comprador</h3>
+                        <h4 class="mb-0">Dados do Comprador</h4>
                     </div>
                 </div>
             </div>
@@ -52,7 +41,7 @@ $valorTotal = tc_converter_float_money($valorTotal);
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Endereço de Entrega</h3>
+                        <h4 class="mb-0">Endereço de Entrega</h4>
                     </div>
                 </div>
             </div>
@@ -60,8 +49,8 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="form-control-label">Cep</label>
-                            <input class="form-control" type="text" name="cep" value="" data-mask="00000-000">
+                            <label class="form-control-label" for="cep">Cep</label>
+                            <input class="form-control" onblur="pesquisacep(this.value);" type="text" name="cep" id="cep" value="" data-mask="00000-000" required>
                         </div>
                     </div>
                 </div>
@@ -69,8 +58,8 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="form-control-label">Endereço</label>
-                            <input class="form-control" type="text" name="endereco" value="">
+                            <label for="endereco" class="form-control-label">Endereço</label>
+                            <input class="form-control" type="text" name="endereco" id="endereco" value="" required>
                         </div>
                     </div>
                 </div>
@@ -78,14 +67,14 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="form-control-label">Número</label>
-                            <input class="form-control" type="text" name="numero" value="">
+                            <label for="numero" class="form-control-label">Número</label>
+                            <input class="form-control" type="text" name="numero" id="numero" value="" required>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <label class="form-control-label">Bairro</label>
-                            <input class="form-control" type="text" name="bairro" value="">
+                            <label for="bairro" class="form-control-label">Bairro</label>
+                            <input class="form-control" type="text" name="bairro" id="bairro" value="" required>
                         </div>
                     </div>
                 </div>
@@ -93,14 +82,14 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-control-label">Cidade</label>
-                            <input class="form-control" type="text" name="cidade" value="">
+                            <label for="cidade" class="form-control-label">Cidade</label>
+                            <input class="form-control" type="text" name="cidade" id="cidade" value="" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-control-label">Estado</label>
-                            <input class="form-control" type="text" name="estado" value="">
+                            <label for="estado" class="form-control-label">Estado</label>
+                            <input class="form-control" type="text" name="estado" id="estado" value="" required>
                         </div>
                     </div>
                 </div>
@@ -113,7 +102,7 @@ $valorTotal = tc_converter_float_money($valorTotal);
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Informações do Frete</h3>
+                        <h4 class="mb-0">Informações do Frete</h4>
                     </div>
                 </div>
             </div>
@@ -157,19 +146,19 @@ $valorTotal = tc_converter_float_money($valorTotal);
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Pagamento</h3>
+                        <h4 class="mb-0">Pagamento</h4>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <h3><?= $post->post_title ?></h3>
+                        <h4><?= $post->post_title ?></h4>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-5 col-md-4">
-                        <img src="<?= the_acadp_listing_thumbnail($post_meta) ?>">
+                        <img src="<?php the_acadp_listing_thumbnail($post_meta) ?>" alt="imagem do produto">
                     </div>
                     <div class="col-7 col-md-8 pt-3">
                         <small class="d-block">Preço: R$ <?= acadp_format_amount($post_meta['price'][0]) ?></small>
@@ -179,13 +168,50 @@ $valorTotal = tc_converter_float_money($valorTotal);
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <?php require_once TUDOCLASSIFICADOS_PATH . 'app/src/Integracoes/MercadoPago/checkout-marktplace.php'; ?>
+                        <div class="cho-container mb-3"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $('.valor-frete').change(function() {
+            console.log('$(this).val()');
+        });
+    });
+
+    $('#add_frete').click(function() {
+
+        var emBase64 = btoa('string');
+
+        window.location = window.location.pathname + '?res=' + emBase64;
+    })
+</script>
+
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<script>
+    // Adicione as credenciais do SDK
+    const mp = new MercadoPago('<?= $preference['publicKey'] ?>', {
+        locale: 'pt-BR'
+    });
+
+    // Inicialize o checkout
+    mp.checkout({
+        preference: {
+            id: '<?= $preference['id'] ?>'
+        },
+        render: {
+            container: '.cho-container',
+            label: 'comprar',
+        }
+    });
+    $('.mercadopago-button').removeClass('mercadopago-button')
+        .addClass('btn btn-success btn-block py-1 rounded');
+</script>
 
 
 

@@ -10,6 +10,7 @@ function tc_script_main()
     wp_enqueue_script('tc-script-6', TUDOCLASSIFICADOS_URL_ASSETS . 'spinners/spinner.js', [], false, true);
     wp_enqueue_script('tc-script-7', TUDOCLASSIFICADOS_URL_ASSETS . 'js/configs.js', [], false, true);
     wp_enqueue_script('tc-script-8', TUDOCLASSIFICADOS_URL_ASSETS . 'carroucel/config.js', [], false, true);
+    wp_enqueue_script('tc-script-busca-cep', TUDOCLASSIFICADOS_URL_ASSETS . 'js/busca-cep.js', [], false, true);
 }
 
 add_action('wp_enqueue_scripts', 'tc_script_main');

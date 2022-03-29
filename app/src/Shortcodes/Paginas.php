@@ -2,6 +2,7 @@
 
 namespace TudoClassificados\App\src\Shortcodes;
 
+use TudoClassificados\App\src\Marketplace\Checkouts\MercadoPago;
 use TudoClassificados\App\src\Shortcodes\Anuncios\NovoAnuncio;
 use TudoClassificados\App\Views\Pages\Classificados\Anuncios\Index;
 use TudoClassificados\App\Views\Pages\MinhaConta\MinhaConta;
@@ -33,7 +34,8 @@ class Paginas
         }
 
         if ($atts['pagina'] == 'checkout-marketplace-mercadopago') {
-            include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/checkout/marketplace/index.php';
+            $pagina = new MercadoPago();
+            $pagina->execute();
             return;
         }
     }
