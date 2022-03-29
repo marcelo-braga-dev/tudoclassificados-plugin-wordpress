@@ -1,8 +1,8 @@
 function limpa_formulario_cep() {
     $('#endereco').val('');
     $('#bairro').val('');
-    $('#estado').val('conteudo.uf');
-    $('#cidade').val('conteudo.uf');
+    $('#estado').val('');
+    $('#cidade').val('');
 }
 
 function meu_callback(conteudo) {

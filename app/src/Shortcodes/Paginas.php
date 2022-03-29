@@ -34,8 +34,22 @@ class Paginas
         }
 
         if ($atts['pagina'] == 'checkout-marketplace-mercadopago') {
-            $pagina = new MercadoPago();
-            $pagina->execute();
+            if ($atts['tipo'] == 'create') {
+                $pagina = new MercadoPago();
+
+                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                    $pagina->create();
+                }
+
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $pagina->store();
+                }
+            }
+
+            if ($atts['tipo'] == 'show') {
+                $pagina = new MercadoPago();
+                $pagina->show();
+            }
             return;
         }
     }
