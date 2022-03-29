@@ -14,6 +14,7 @@
                 </div>
             </div>
             <div class="card-body">
+                <?php if (cepUsuario()): ?>
                 <form action="">
                     <div class="row">
                         <div class="col-12 mb-2">
@@ -28,6 +29,7 @@
                         </div>
                     </div>
                 </form>
+                <?php else: cadastrarCep(); endif;?>
                 <div class="row">
                     <div class="col-12">
                         <?php if ($produtosBling['erro']) : ?>

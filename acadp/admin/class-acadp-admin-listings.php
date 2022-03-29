@@ -94,7 +94,7 @@ class ACADP_Admin_Listings
 		add_submenu_page(
 			'advanced-classifieds-and-directory-pro',
 			__('Advanced Classifieds and Directory Pro - All Listings', 'advanced-classifieds-and-directory-pro'),
-			__('Todos Classsificados', 'advanced-classifieds-and-directory-pro'),
+			__('Todos Anúncios', 'advanced-classifieds-and-directory-pro'),
 			'edit_others_acadp_listings',
 			'edit.php?post_type=acadp_listings'
 		);

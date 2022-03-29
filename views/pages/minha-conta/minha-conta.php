@@ -1,25 +1,4 @@
 <style>
-    /*.seleciona-linha-table {*/
-    /*    cursor: pointer;*/
-    /*}*/
-
-    /*.nav-link nav-lvl-2    /*    !* color: var(--principal) !important; *!*/
-    /*    color: #333;*/
-    /*    font-size: 14px;*/
-    /*    font-weight: 300 !important;*/
-    /*}*/
-
-    /*.nav-link nav-lvl-2ive {*/
-    /*    color: red !important;*/
-    /*}*/
-
-    /*a.active {*/
-    /*    color: orange !important;*/
-    /*}*/
-
-    /*.text-sub-menu {*/
-    /*    font-size: 14px !important;*/
-    /*}*/
     .nav-lvl-2.active {
         color: orange;
     }

@@ -52,9 +52,7 @@ if (!empty($_GET['frete'])) {
             </div>
         </div>
     <?php else :
-
         $cep_anunciante = get_user_meta($post->post_author)['cep'][0];
-
         if (
             !empty($cep_anunciante) &&
             !empty($post_meta['peso'][0]) &&
@@ -71,9 +69,11 @@ if (!empty($_GET['frete'])) {
                         <div class="input-group-prepend">
                             <div class="input-group-text" for="consulta-frete">Cep</div>
                         </div>
-                        <input style="width: 8rem;" type="text" class="form-control" id="consulta-frete" value="<?= $_GET['cep_pesquisado'] ?>" data-mask="00000-000" placeholder="00000-000">
+                        <input style="width: 8rem;" type="text" class="form-control" id="consulta-frete"
+                               value="<?= $_GET['cep_pesquisado'] ?>" data-mask="00000-000" placeholder="00000-000">
                     </div>
-                    <a class="small d-block" target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/index.php">
+                    <a class="small d-block" target="_blank"
+                       href="https://buscacepinter.correios.com.br/app/endereco/index.php">
                         Não sei o CEP
                     </a>
                     <input type="hidden" id="cep-origem" value="<?= $cep_anunciante ?>">
@@ -109,7 +109,8 @@ if (!empty($_GET['frete'])) {
         <div class="alert alert-info" id="alert-cep" style="display: none">
             Por favor, calcule o valor do frete.
         </div>
-        <button class="btn btn-success rounded mb-3 btn-block" id="btn-comprar" style="font-size: 18px" onclick="alertCep(this)">
+        <button class="btn btn-success rounded mb-3 btn-block" id="btn-comprar" style="font-size: 18px"
+                onclick="alertCep(this)">
             COMPRAR
         </button>
 
@@ -132,7 +133,8 @@ if (!empty($_GET['frete'])) {
 
     <div class="d-block">
         <small>
-            Anunciado por <?php echo '<a href="' . esc_url(acadp_get_user_page_link($post->post_author)) . '" style="color: #1e4b75">' . get_the_author() . '</a>'; ?>
+            Anunciado
+            por <?php echo '<a href="' . esc_url(acadp_get_user_page_link($post->post_author)) . '" style="color: #1e4b75">' . get_the_author() . '</a>'; ?>
         </small>
     </div>
 </div>

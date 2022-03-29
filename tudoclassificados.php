@@ -26,7 +26,7 @@ define('TUDOCLASSIFICADOS_URL_ASSETS', plugin_dir_url(__FILE__) . 'assets/');
 require_once 'acadp/acadp.php';
 require_once 'vendor/autoload.php';
 require_once 'app/Helpers/includes.php';
-
+require_once 'includes/admin/menus.php';
 
 require_once 'includes/shortcodes/class.php';
 

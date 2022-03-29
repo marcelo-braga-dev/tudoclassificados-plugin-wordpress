@@ -4,6 +4,7 @@ namespace TudoClassificados\App\src\Shortcodes;
 
 use TudoClassificados\App\src\Shortcodes\Anuncios\NovoAnuncio;
 use TudoClassificados\App\Views\Pages\Classificados\Anuncios\Index;
+use TudoClassificados\App\Views\Pages\MinhaConta\MinhaConta;
 
 class Paginas
 {
@@ -18,12 +19,22 @@ class Paginas
         if ($atts['pagina'] == 'minha-conta') {
             if (is_user_logged_in()) {
                 new NovoAnuncio();
-                require_once TUDOCLASSIFICADOS_PATH . 'app/Services/Pages/MinhaConta/index.php';
+
+                $minhaConta = new MinhaConta();
+                $minhaConta->index();
+            }
+        }
+
+        if ($atts['pagina'] == 'lista-anuncio') {
+            if ($atts['tipo'] == 'marketplace') {
+                $pagina = new \TudoClassificados\App\Views\Pages\Marketplace\Anuncios\Index();
+                return $pagina->index($atts);
             }
         }
 
         if ($atts['pagina'] == 'checkout-marketplace-mercadopago') {
             include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/checkout/marketplace/index.php';
+            return;
         }
     }
 }

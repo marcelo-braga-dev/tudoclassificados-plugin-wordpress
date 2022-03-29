@@ -2,12 +2,9 @@
 
 namespace TudoClassificados\App\src\Anuncios\Marketplace;
 
-
-use TudoClassificados\App\src\Anuncios\DadosAnuncio;
-
 class CadastrarAnuncioMarketplace
 {
-    protected function store(DadosAnuncio $dados, $terms)
+    protected function store(DadosAnuncioMarketplace $dados, $terms)
     {
         $user = wp_get_current_user();
         $userId = get_current_user_id();

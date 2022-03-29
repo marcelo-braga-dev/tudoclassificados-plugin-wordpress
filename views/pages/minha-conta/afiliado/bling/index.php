@@ -49,7 +49,7 @@
                                 <button type="submit" class="btn btn-success rounded my-3">Integrar Anúncios
                                     Selecionados
                                 </button>
-                                <input type="hidden" name="integrar_marketplace_bling" value="true">
+                                <input type="hidden" name="integrar_afiliado_bling" value="true">
                                 <div class="table-responsive">
                                     <table class="table align-items-center table-flush">
                                         <thead class="thead-light">

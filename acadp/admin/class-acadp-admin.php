@@ -221,7 +221,7 @@ class ACADP_Admin {
 		add_submenu_page(
 			'advanced-classifieds-and-directory-pro',
 			__( 'Advanced Classifieds and Directory Pro - Dashboard', 'advanced-classifieds-and-directory-pro' ),
-			__( 'Painel de Controle', 'advanced-classifieds-and-directory-pro' ),
+			__( 'Shortcodes', 'advanced-classifieds-and-directory-pro' ),
 			'edit_others_acadp_listings',
 			'advanced-classifieds-and-directory-pro',
 			array( $this, 'display_dashboard_content' )
@@ -234,25 +234,21 @@ class ACADP_Admin {
 	 * @since 1.7.3
 	 */
 	public function display_dashboard_content() {
+
 		$general_settings = get_option( 'acadp_general_settings' );
 
 		// Tabs
 		$tabs = array(
-			'getting-started'   => __( 'Getting Started', 'advanced-classifieds-and-directory-pro' ),
-			'shortcode-builder' => __( 'Shortcode Builder', 'advanced-classifieds-and-directory-pro' ),
-			'faq'               => __( 'FAQ', 'advanced-classifieds-and-directory-pro' )
-		);		
+			'shortcode-builder' => 'Shortcodes',
+			//'getting-started'   => __( 'Getting Started', 'advanced-classifieds-and-directory-pro' ),
+			//'faq'               => __( 'FAQ', 'advanced-classifieds-and-directory-pro' )
+		);
 
-		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'getting-started';
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'shortcode-builder';
 
-		// Issues
-		$issues = $this->check_issues();
+		wp_enqueue_style('tc-styles-4', TUDOCLASSIFICADOS_URL_ASSETS . 'bootstrap/css/bootstrap.min.css');
 
-		if ( count( $issues['found'] ) || 'issues' == $active_tab  ) {
-			$tabs['issues'] = __( 'Issues Detected', 'advanced-classifieds-and-directory-pro' );
-		}		
-
-		require_once ACADP_PLUGIN_DIR . 'admin/partials/dashboard/dashboard.php';	
+        require_once ACADP_PLUGIN_DIR . 'admin/partials/dashboard/dashboard.php';
 	}
 
 	/**

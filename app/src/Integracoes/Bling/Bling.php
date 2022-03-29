@@ -2,6 +2,8 @@
 
 namespace TudoClassificados\App\src\Integracoes\Bling;
 
+use TudoClassificados\App\src\Integracoes\Bling\Marketplace\CadastrarProduto;
+
 class Bling
 {
     private $produtos;
@@ -22,11 +24,18 @@ class Bling
         return $this->produtos;
     }
 
-    public function cadastrarAnuncios(string $tipo)
+    public function cadastrarAnuncios(string $tipo): void
     {
         if (!empty($_POST['checks'])) {
-            $clsBling = new CadastrarProdutoBling($tipo);
-            $clsBling->cadastrar($this->produtos);
+            if (!empty($_POST['integrar_marketplace_bling'])) {
+                $cadastrarAnuncio = new CadastrarProduto();
+                $cadastrarAnuncio->cadastrar($this->produtos);
+            }
+
+            if (!empty($_GET['integrar_afiliado_bling'])) {
+                $clsBling = new CadastrarProdutoBling($tipo);
+                $clsBling->cadastrar($this->produtos);
+            }
 
             session('aba_minha_conta', $tipo);
             wp_redirect('/minha-conta');

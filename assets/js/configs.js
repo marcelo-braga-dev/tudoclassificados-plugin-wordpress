@@ -6,6 +6,11 @@ $(document).ready(function () {
     $('.adsbygoogle').show();
 });
 
+$(function (){
+    $('#modalCadastroCep').modal('show');
+    $('#modalSucesso').modal('show')
+})
+
 $.LoadingOverlaySetup({
     background: "rgba(0, 0, 0, 0.5)",
     //     imageAnimation  : "1.5s fadein",
