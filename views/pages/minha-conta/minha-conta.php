@@ -2,6 +2,7 @@
     .nav-lvl-2.active {
         color: orange;
     }
+
     .categoria-anuncio.active {
         background-color: var(--principal);
         border: 0px;
@@ -82,7 +83,9 @@
                         <i class="fas fa-store"></i>
                         <span class="ml-2">Marketplace</span>
                     </a>
-                    <div class="collapse <?= get_menu_minha_conta('marketplace') || get_menu_minha_conta('marketplace-integrar-bling') ? 'show' : '' ?>"
+                    <div class="collapse <?= get_menu_minha_conta('marketplace') ||
+                            get_menu_minha_conta('marketplace-integrar-bling') ||
+                            get_menu_minha_conta('marketplace-integrar-mercadopago') ? 'show' : '' ?>"
                          id="navbar-marketplace">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
@@ -99,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('marketplace_integrar_mercadopago') ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('marketplace-integrar-mercadopago') ? 'active' : '' ?>"
                                    data-toggle="list" href="#marketplace_integrar_mercadopago" role="tab">
                                     <span class="text-sub-menu pl-4">Conta Mercado Pago</span>
                                 </a>
@@ -310,7 +313,8 @@
                      role="tabpanel">
                     <?php include 'imoveis/novo/novo-anuncio.php'; ?>
                 </div>
-                <div class="tab-pane fade <?= get_menu_minha_conta('imoveis') ? 'active show' : '' ?>" id="imoveis_anuncios"
+                <div class="tab-pane fade <?= get_menu_minha_conta('imoveis') ? 'active show' : '' ?>"
+                     id="imoveis_anuncios"
                      role="tabpanel">
                     <?php include 'imoveis/anuncios.php'; ?>
                 </div>

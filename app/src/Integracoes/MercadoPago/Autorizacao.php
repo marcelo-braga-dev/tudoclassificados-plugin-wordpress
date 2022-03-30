@@ -47,7 +47,8 @@ class Autorizacao extends Dados
             $armazenarDados =  new ArmazenarDados();
             $armazenarDados->store($resposta);
 
-            wp_redirect('/minha-conta?menu_minha_conta=marketplace_integrar_mercadopago');
+            set_menu_minha_conta('marketplace-integrar-mercadopago');
+            wp_redirect('/minha-conta');
 
         } catch (ClientException $e) {
             echo $e->getMessage();
