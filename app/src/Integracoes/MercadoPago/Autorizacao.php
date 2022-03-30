@@ -9,10 +9,12 @@ class Autorizacao extends Dados
 {
     public function retorno()
     {
-        $code = $_GET['code'];
-        $state = $_GET['state'];
+        if (!empty($_GET['code'])) {
+            $code = $_GET['code'];
+            $state = $_GET['state'];
 
-        $this->autorizar($code);
+            $this->autorizar($code);
+        }
     }
 
     public function autorizar(string $code)
