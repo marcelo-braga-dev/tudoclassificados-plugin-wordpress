@@ -26,17 +26,18 @@ class Autorizacao extends Dados
 
         try {
             $requisicao = $client->request('POST',
-                'https://api.mercadolibre.com/oauth/token', [
+                'https://api.mercadopago.com/oauth/token', [
                     'headers' => [
+                        'Authorization' => 'Bearer ' . 'APP_USR-463057725192964-032913-6b7e39d2b40aad90039400c893f0ad56-465347382',
                         'accept' => 'application/json',
                         'content-type' => 'application/x-www-form-urlencoded'
                     ],
                     'form_params' => [
+                        'client_secret' => 'E3wvJ86kDYxCKhTgO6B6ZAGLrlVlTDbk',
+                        'client_id' => '463057725192964',
                         'grant_type' => 'authorization_code',
-                        'client_id' => $this->appID,
-                        'client_secret' => $this->clientSecret,
                         'code' => $code,
-                        'redirect_uri' => $this->redirectUri,
+                        'redirect_uri' => 'https://www.tudoclassificados.com/integracoes/mercadopago/redirect-url',
                     ]
                 ]);
 
