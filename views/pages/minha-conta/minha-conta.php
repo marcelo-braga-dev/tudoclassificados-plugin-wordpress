@@ -7,7 +7,6 @@
 <div class="card" style="background-color: #fcfcfc">
     <div class="row m-0">
         <div class="col-md-2 card pt-4 pb-md-9 mb-md-9">
-
             <ul class="list-group navbar-nav m-0" id="minhaLista" role="tablist" style="font-size: 13px;">
                 <!-- Perfil -->
                 <li class="nav-item">
@@ -25,7 +24,7 @@
                                 <a class="nav-link nav-lvl-2"
                                    data-toggle="list"
                                    href="#resumo" role="tab">
-                                    <span class="text-sub-menu">Dados de Contato</span>
+                                    <span class="text-sub-menu pl-4">Dados de Contato</span>
                                 </a>
                             </li>
                         </ul>
@@ -51,21 +50,21 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-classificado' ? 'active' : '' ?>"
                                    data-toggle="list" href="#novo-classificado" role="tab">
-                                    <span class="text-sub-menu">Novo Anúncio</span>
+                                    <span class="text-sub-menu pl-4">Novo Anúncio</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#anuncios-classificados" role="tab">
-                                    <span class="text-sub-menu">Anúncios Classificados</span>
+                                    <span class="text-sub-menu pl-4">Anúncios Classificados</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados-integrar-bling' ? 'active' : '' ?>"
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#classificados-integrar" role="tab">
-                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                    <span class="text-sub-menu pl-4">Integrar com Bling</span>
                                 </a>
                             </li>
                         </ul>
@@ -88,19 +87,19 @@
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace' ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#marketplace_anuncios" role="tab">
-                                    <span class="text-sub-menu">Anuncios Marketplace</span>
+                                    <span class="text-sub-menu pl-4">Anuncios Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-bling' ? 'active' : '' ?>"
                                    data-toggle="list" href="#marketplace_integrar" role="tab">
-                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                    <span class="text-sub-menu pl-4">Integrar com Bling</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-mercadopago' ? 'active' : '' ?>"
                                    data-toggle="list" href="#marketplace_integrar_mercadopago" role="tab">
-                                    <span class="text-sub-menu">Conta Mercado Pago</span>
+                                    <span class="text-sub-menu pl-4">Conta Mercado Pago</span>
                                 </a>
                             </li>
                         </ul>
@@ -127,20 +126,20 @@
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-imovel' ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#novo-imovel" role="tab">
-                                    <span class="text-sub-menu">Cadastrar Anúncio</span>
+                                    <span class="text-sub-menu pl-4">Cadastrar Anúncio</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
                                    data-toggle="list" href="#imoveis_anuncios" role="tab">
-                                    <span class="text-sub-menu">Anuncios de Imóveis</span>
+                                    <span class="text-sub-menu pl-4">Anuncios de Imóveis</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#imoveis_ingaia" role="tab">
-                                    <span class="text-sub-menu">Integrar com inGaia</span>
+                                    <span class="text-sub-menu pl-4">Integrar com inGaia</span>
                                 </a>
                             </li>
                         </ul>
@@ -165,14 +164,14 @@
                                 <a class="nav-link nav-lvl-2"
                                    data-toggle="list"
                                    href="#anuncios_filiado" role="tab">
-                                    <span class="text-sub-menu">Anuncios Afiliado</span>
+                                    <span class="text-sub-menu pl-4">Anuncios Afiliado</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-lvl-2"
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#filiado_bling" role="tab">
-                                    <span class="text-sub-menu">Integrar com Bling</span>
+                                    <span class="text-sub-menu pl-4">Integrar com Bling</span>
                                 </a>
                             </li>
                         </ul>
@@ -197,7 +196,7 @@
                                 <a class="nav-link nav-lvl-2"
                                    data-toggle="list"
                                    href="#comentarios" role="tab">
-                                    <span class="text-sub-menu">Perguntas</span>
+                                    <span class="text-sub-menu pl-4">Perguntas</span>
                                 </a>
                             </li>
                         </ul>
@@ -222,7 +221,7 @@
                                 <a class="nav-link nav-lvl-2"
                                    data-toggle="list"
                                    href="#pagamentos" role="tab">
-                                    <span class="text-sub-menu">Histórico</span>
+                                    <span class="text-sub-menu pl-4">Histórico</span>
                                 </a>
                             </li>
                         </ul>
@@ -246,7 +245,7 @@
                                 <a class="nav-link nav-lvl-2"
                                    data-toggle="list"
                                    href="#editar-perfil" role="tab">
-                                    <span class="text-sub-menu">Editar Perfil</span>
+                                    <span class="text-sub-menu pl-4">Editar Perfil</span>
                                 </a>
                             </li>
                         </ul>

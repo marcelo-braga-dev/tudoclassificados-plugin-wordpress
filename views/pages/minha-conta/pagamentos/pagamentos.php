@@ -7,11 +7,11 @@ $pagamentos = $wpdb->get_results("SELECT * FROM class_imp_contas_premium
         <div class="card">
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
-                    <div>
-                        <h3 class="mb-0">Pagamentos</h3>
+                    <div class="col-auto">
+                        <h5 class="mb-0">Pagamentos</h5>
                     </div>
-                    <div>
-                        <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-principal text-white rounded-circle shadow">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                     </div>

@@ -7,3 +7,4 @@
         <span>Marketplace: [tc_paginas pagina='lista-anuncio' tipo='marketplace']</span>
     </div>
 </div>
+<span>Checkout Mercado Pago: [tc_paginas pagina="checkout-marketplace-mercadopago" tipo='create']</span>

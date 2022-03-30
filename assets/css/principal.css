@@ -7,7 +7,7 @@ h1{
     font-size:24px;
 }
 h3{
-    color:var(--principal);
+    color: var(--principal);
 }
 h3 a{
     color:var(--principal) !important;
@@ -119,4 +119,12 @@ li {
 
 .emblema-status {
     font-size: 11px;
+}
+
+.bg-principal {
+    background-color: var(--principal) !important;
+}
+
+.text-principal {
+    color: var(--principal) !important;
 }

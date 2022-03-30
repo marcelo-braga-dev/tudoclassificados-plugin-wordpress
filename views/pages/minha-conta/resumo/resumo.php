@@ -1,5 +1,4 @@
 <?php
-
 $current_user = wp_get_current_user();
 
 if (!empty($_POST['form-contato'])) {
@@ -11,19 +10,17 @@ if (!empty($_POST['form-contato'])) {
 
     wp_redirect('/minha-conta');
 }
-
 ?>
-
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
-                    <div>
-                        <h3 class="mb-0">Seus Meios de Contato</h3>
+                    <div class="col-auto">
+                        <h5 class="mb-0">Seus Meios de Contato</h5>
                     </div>
-                    <div>
-                        <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-principal text-white rounded-circle shadow">
                             <i class="fas fa-comments"></i>
                         </div>
                     </div>
