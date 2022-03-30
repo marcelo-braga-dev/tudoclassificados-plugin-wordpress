@@ -42,13 +42,22 @@ class MinhaConta
             $imoveisIngaia = $service->index();
         }
 
+        $contasIntegradasMercadoPago = $this->getContasIntegradasMercadoPago();
+
         $limiteAnunciosPremium = get_limit_anuncios_premium($userId);
         $anunciosImoveisAtivo = get_qtd_anuncios_imoveis_usuario($userId);
         $limitesImovel = tc_limit_imoveis_usuario($limiteAnunciosPremium['imoveis'], $anunciosImoveisAtivo);
 
-        //$abaMenu = get_session('aba_minha_conta') ?? $_GET['aba_minha_conta'];
-
         require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/minha-conta/minha-conta.php';
         set_menu_minha_conta('destroy');
+    }
+
+    private function getContasIntegradasMercadoPago()
+    {
+        global $wpdb;
+        $table = new \TudoClassificados\App\src\Integracoes\MercadoPago\Dados();
+        $id = get_current_user_id();
+
+        return $wpdb->get_results("SELECT * FROM `{$table->table}` WHERE `user` = $id");
     }
 }

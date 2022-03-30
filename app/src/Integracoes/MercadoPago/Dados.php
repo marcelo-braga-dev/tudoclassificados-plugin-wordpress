@@ -7,11 +7,13 @@ class Dados
     public $appID;
     public $clientSecret;
     public $redirectUri;
+    public $table;
 
     public function __construct()
     {
         $this->appID = '463057725192964';
         $this->clientSecret = 'TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382';
         $this->redirectUri = 'https://www.tudoclassificados.com/integracoes/mercadopago/redirect-url';
+        $this->table = 'class_tc_integracoes_mercadopago';
     }
 }

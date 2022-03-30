@@ -16,16 +16,16 @@
             <div class="card-body">
                 <?php if (cepUsuario()): ?>
                 <form action="">
-                    <div class="row">
-                        <div class="col-12 mb-2">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 mb-2">
                             <label>Api Key Bling</label>
                             <input type="text" name="token_bling" class="form-control"
                                    value="<?= $_GET['token_bling'] ?>">
                         </div>
-                        <div class="col-12  mb-2">
+                        <div class="col-12  col-md-10 mb-2">
                             <input type="hidden" name="marketplace-bling" value="true">
                             <input type="hidden" name="menu_minha_conta" value="marketplace-integrar-bling">
-                            <button type="submit" class="btn btn-primary rounded">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary rounded">Buscar Produtos</button>
                         </div>
                     </div>
                 </form>

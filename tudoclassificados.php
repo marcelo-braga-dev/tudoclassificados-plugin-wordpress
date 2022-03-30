@@ -10,7 +10,7 @@ Text Domain: Marcelo Braga
 License: GPLv2 or later
 */
 session_start();
-
+error_reporting(0);
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
