@@ -11,7 +11,7 @@ class Autorizacao extends Dados
     public function retorno()
     {
         if (!empty($_GET['code'])) {
-            $code = $_GET['code']; //TG-624451cedcb154001abd08ec-465347382
+            $code = $_GET['code'];
             $state = $_GET['state'];
 
             $this->autorizar($code);
@@ -43,7 +43,11 @@ class Autorizacao extends Dados
 
             $json = $requisicao->getBody();
             $resposta = json_decode($json, true);
-            print_pre($resposta);
+
+            $armazenarDados =  new ArmazenarDados();
+            $armazenarDados->store($resposta);
+
+            wp_redirect('/minha-conta');
 
         } catch (ClientException $e) {
             echo $e->getMessage();
