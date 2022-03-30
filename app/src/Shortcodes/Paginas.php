@@ -2,6 +2,7 @@
 
 namespace TudoClassificados\App\src\Shortcodes;
 
+use TudoClassificados\App\src\Integracoes\MercadoPago\Autorizacao;
 use TudoClassificados\App\src\Marketplace\Checkouts\MercadoPago;
 use TudoClassificados\App\src\Shortcodes\Anuncios\NovoAnuncio;
 use TudoClassificados\App\Views\Pages\Classificados\Anuncios\Index;
@@ -45,12 +46,11 @@ class Paginas
                     $pagina->store();
                 }
             }
+        }
 
-            if ($atts['tipo'] == 'show') {
-                $pagina = new MercadoPago();
-                $pagina->show();
-            }
-            return;
+        if ($atts['pagina'] == 'redirect-url-mercadopago') {
+            $pagina = new Autorizacao();
+            $pagina->retorno();
         }
     }
 }

@@ -14,7 +14,10 @@
                 </div>
             </div>
             <div class="card-body">
-                Em Manutenção
+                <a class="btn btn-primary"
+                   href="https://auth.mercadopago.com/authorization?client_id=463057725192964&response_type=code&platform_id=mp&state=RANDOM_ID&redirect_uri=https://www.tudoclassificados.com/integracoes/mercadopago/redirect-url">
+                    Aurorizar
+                </a>
             </div>
         </div>
     </div>
