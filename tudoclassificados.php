@@ -32,3 +32,5 @@ require_once 'includes/shortcodes/class.php';
 
 require_once 'assets/footer.php';
 require_once 'assets/header.php';
+
+set_menu_minha_conta();

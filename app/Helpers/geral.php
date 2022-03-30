@@ -49,19 +49,6 @@ function print_pre($valor)
     exit();
 }
 
-function session(string $name, string $value)
-{
-    $_SESSION[$name] = $value;
-}
-
-function get_session(string $name)
-{
-    $date = $_SESSION[$name];
-    unset($_SESSION[$name]);
-
-    return $date;
-}
-
 function get_qtd_anuncios_imoveis_usuario(string $user_id): int
 {
     global $wpdb;

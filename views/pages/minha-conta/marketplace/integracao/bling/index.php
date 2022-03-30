@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-12  mb-2">
                             <input type="hidden" name="marketplace-bling" value="true">
-                            <input type="hidden" name="aba_menu" value="marketplace-integrar-bling">
+                            <input type="hidden" name="menu_minha_conta" value="marketplace-integrar-bling">
                             <button type="submit" class="btn btn-primary rounded">Pesquisar</button>
                         </div>
                     </div>

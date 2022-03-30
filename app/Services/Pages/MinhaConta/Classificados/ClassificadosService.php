@@ -13,7 +13,8 @@ class ClassificadosService
             $clsBling = new Requisicao();
             $produtosBling = $clsBling->getProdutos($_GET['token_bling']);
 
-            session('aba_minha_conta', 'classificados-integrar-bling');
+            set_menu_minha_conta('classificados-integrar-bling');
+
             if (empty($_POST['checks'])) return $produtosBling;
 
             $this->cadastrarAnuncios($produtosBling);
@@ -25,7 +26,7 @@ class ClassificadosService
         $clsBling = new CadastrarProdutoBling('classificados');
         $clsBling->cadastrar($produtosBling);
 
-        session('aba_minha_conta', 'classificados');
+        set_menu_minha_conta('classificados');
         wp_redirect('/minha-conta');
         exit();
     }

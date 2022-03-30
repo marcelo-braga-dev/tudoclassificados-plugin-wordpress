@@ -2,6 +2,10 @@
     .nav-lvl-2.active {
         color: orange;
     }
+    .categoria-anuncio.active {
+        background-color: var(--principal);
+        border: 0px;
+    }
 </style>
 
 <div class="card" style="background-color: #fcfcfc">
@@ -35,33 +39,31 @@
                 <!-- Classificados -->
                 <li class="nav-item">
                     <a class="nav-link nav-lvl-1" href="#navbar-classificados"
-                       data-toggle="collapse" role="button"
-                       aria-expanded="false" aria-controls="navbar-classificados">
+                       data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-classificados">
                         <i class="fab fa-dribbble"></i>
                         <span class="ml-2">
                             Classificados
                         </span>
                     </a>
-                    <div class="collapse
-                        <?= $abaMenu == 'classificados' || $abaMenu == 'classificados-integrar-bling' ||
-                            $abaMenu == 'novo-classificado' || $abaMenu == 'editar-classificado' ? 'show' : '' ?>"
+                    <div class="collapse <?= get_menu_minha_conta('classificados') || get_menu_minha_conta('classificados-integrar-bling') ||
+                    get_menu_minha_conta('novo-classificado') || get_menu_minha_conta('editar-classificado') ? 'show' : '' ?>"
                          id="navbar-classificados">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-classificado' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('novo-classificado') ? 'active' : '' ?>"
                                    data-toggle="list" href="#novo-classificado" role="tab">
                                     <span class="text-sub-menu pl-4">Novo Anúncio</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('classificados') ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#anuncios-classificados" role="tab">
                                     <span class="text-sub-menu pl-4">Anúncios Classificados</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'classificados-integrar-bling' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('classificados-integrar-bling') ? 'active' : '' ?>"
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#classificados-integrar" role="tab">
                                     <span class="text-sub-menu pl-4">Integrar com Bling</span>
@@ -80,24 +82,24 @@
                         <i class="fas fa-store"></i>
                         <span class="ml-2">Marketplace</span>
                     </a>
-                    <div class="collapse <?= $abaMenu == 'marketplace' || $abaMenu == 'marketplace-integrar-bling' ? 'show' : '' ?>"
+                    <div class="collapse <?= get_menu_minha_conta('marketplace') || get_menu_minha_conta('marketplace-integrar-bling') ? 'show' : '' ?>"
                          id="navbar-marketplace">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('marketplace') ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#marketplace_anuncios" role="tab">
                                     <span class="text-sub-menu pl-4">Anuncios Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-bling' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('marketplace-integrar-bling') ? 'active' : '' ?>"
                                    data-toggle="list" href="#marketplace_integrar" role="tab">
                                     <span class="text-sub-menu pl-4">Integrar com Bling</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'marketplace-integrar-mercadopago' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('marketplace_integrar_mercadopago') ? 'active' : '' ?>"
                                    data-toggle="list" href="#marketplace_integrar_mercadopago" role="tab">
                                     <span class="text-sub-menu pl-4">Conta Mercado Pago</span>
                                 </a>
@@ -118,25 +120,25 @@
                             Imóveis
                         </span>
                     </a>
-                    <div class="collapse <?= $abaMenu == 'imoveis' || $abaMenu == 'editar-imoveis' ||
-                    $abaMenu == 'imoveis-integrar-ingaia' || $abaMenu == 'novo-imovel' ? 'show' : '' ?>"
+                    <div class="collapse <?= get_menu_minha_conta('imoveis') || get_menu_minha_conta('editar-imoveis') ||
+                    get_menu_minha_conta('imoveis-integrar-ingaia') || get_menu_minha_conta('novo-imovel') ? 'show' : '' ?>"
                          id="navbar-imoveis">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'novo-imovel' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('novo-imovel') ? 'active' : '' ?>"
                                    data-toggle="list"
                                    href="#novo-imovel" role="tab">
                                     <span class="text-sub-menu pl-4">Cadastrar Anúncio</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('imoveis') ? 'active' : '' ?>"
                                    data-toggle="list" href="#imoveis_anuncios" role="tab">
                                     <span class="text-sub-menu pl-4">Anuncios de Imóveis</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-lvl-2 <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active' : '' ?>"
+                                <a class="nav-link nav-lvl-2 <?= get_menu_minha_conta('imoveis-integrar-ingaia') ? 'active' : '' ?>"
                                    id="classificados-integrar-tab" data-toggle="list"
                                    href="#imoveis_ingaia" role="tab">
                                     <span class="text-sub-menu pl-4">Integrar com inGaia</span>
@@ -258,35 +260,37 @@
             <!-- Painel de abas -->
             <div class="tab-content">
                 <!-- Resumo -->
-                <div class="tab-pane fade <?php if (empty($abaMenu)) echo 'active show' ?>" id="resumo"
+                <div class="tab-pane fade <?php if (empty(get_menu_minha_conta())) echo 'active show' ?>"
+                     id="resumo"
                      role="tabpanel">
                     <?php include 'resumo/resumo.php' ?>
                 </div>
 
                 <!-- Anuncios Classificados -->
-                <div class="tab-pane fade <?= $abaMenu == 'novo-classificado' || $abaMenu == 'editar-classificado' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('novo-classificado') || get_menu_minha_conta('editar-classificado') ? 'active show' : '' ?>"
                      id="novo-classificado" role="tabpanel">
                     <?php include 'classificados/novo-anuncio/novo-anuncio.php' ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'classificados' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('classificados') ? 'active show' : '' ?>"
                      id="anuncios-classificados" role="tabpanel">
                     <?php include 'classificados/anuncios-classificados.php' ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'classificados-integrar-bling' ? 'active show' : '' ?>"
-                     id="classificados-integrar" role="tabpanel">
+                <div class="tab-pane fade <?= get_menu_minha_conta('classificados-integrar-bling') ? 'active show' : '' ?>"
+                     id="classificados-integrar"
+                     role="tabpanel">
                     <?php include 'classificados/integrar/integrar.php' ?>
                 </div>
 
                 <!-- Marketplace -->
-                <div class="tab-pane fade <?= $abaMenu == 'marketplace' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('marketplace') ? 'active show' : '' ?>"
                      id="marketplace_anuncios" role="tabpanel">
                     <?php include 'marketplace/anuncios.php' ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'marketplace-integrar-bling' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('marketplace-integrar-bling') ? 'active show' : '' ?>"
                      id="marketplace_integrar" role="tabpanel">
                     <?php include 'marketplace/integracao/bling/index.php' ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'marketplace-integrar-mercadopago' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('marketplace-integrar-mercadopago') ? 'active show' : '' ?>"
                      id="marketplace_integrar_mercadopago" role="tabpanel">
                     <?php include 'marketplace/integracao/mercadopago/pagina.php' ?>
                 </div>
@@ -295,21 +299,22 @@
                 <div class="tab-pane fade" id="anuncios_filiado" role="tabpanel">
                     <?php include 'afiliado/anuncios.php' ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'filiado_bling' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('filiado_bling') ? 'active show' : '' ?>"
                      id="filiado_bling" role="tabpanel">
                     <?php include 'afiliado/bling/index.php' ?>
                 </div>
 
                 <!-- Imoveis -->
-                <div class="tab-pane fade <?= $abaMenu == 'novo-imovel' || $abaMenu == 'editar-imoveis' ? 'active show' : '' ?>" id="novo-imovel"
+                <div class="tab-pane fade <?= get_menu_minha_conta('novo-imovel') || get_menu_minha_conta('editar-imoveis') ? 'active show' : '' ?>"
+                     id="novo-imovel"
                      role="tabpanel">
                     <?php include 'imoveis/novo/novo-anuncio.php'; ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'imoveis' ? 'active show' : '' ?>" id="imoveis_anuncios"
+                <div class="tab-pane fade <?= get_menu_minha_conta('imoveis') ? 'active show' : '' ?>" id="imoveis_anuncios"
                      role="tabpanel">
                     <?php include 'imoveis/anuncios.php'; ?>
                 </div>
-                <div class="tab-pane fade <?= $abaMenu == 'imoveis-integrar-ingaia' ? 'active show' : '' ?>"
+                <div class="tab-pane fade <?= get_menu_minha_conta('imoveis-integrar-ingaia') ? 'active show' : '' ?>"
                      id="imoveis_ingaia" role="tabpanel">
                     <?php include 'imoveis/ingaia/index.php'; ?>
                 </div>

@@ -175,7 +175,7 @@ class SalvarAnuncioImovel
                 $freteGratis = sanitize_text_field($_POST['frete-gratis']);
                 update_post_meta($post_id, 'frete_gratis', $freteGratis);
 
-                session('aba_minha_conta', 'imoveis');
+                set_menu_minha_conta('imoveis');
             }
 
             if (!empty($general_settings['has_price'])) {

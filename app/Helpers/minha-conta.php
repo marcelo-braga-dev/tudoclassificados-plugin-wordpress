@@ -1,4 +1,35 @@
 <?php
+if (!function_exists('set_menu_minha_conta')) {
+    function set_menu_minha_conta($valor = null)
+    {
+        if (!empty($_GET['menu_minha_conta'])) {
+            $_SESSION['menu_minha_conta'] = $_GET['menu_minha_conta'];
+        }
+
+        if (!empty($valor)) {
+            $_SESSION['menu_minha_conta'] = $valor;
+        }
+
+        if ($valor == 'destroy') {
+            $_SESSION['menu_minha_conta'] = '';
+        }
+    }
+}
+
+if (!function_exists('get_menu_minha_conta')) {
+    function get_menu_minha_conta($valor = null)
+    {
+
+        $session = $_SESSION['menu_minha_conta'];
+
+        if (!empty($session) && !empty($valor)) {
+            if ($session != $valor) return false;
+        }
+
+        return $session;
+    }
+}
+
 if (!function_exists('todas_categorias')) {
     function todas_categorias($id_produto)
     { ?>

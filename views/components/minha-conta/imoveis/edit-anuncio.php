@@ -108,7 +108,7 @@
                                 <form action="">
                                     <input type="hidden" name="id_anuncio" value="<?= $post->ID ?>">
                                     <input type="hidden" name="edit-anuncio" value="imoveis">
-                                    <input type="hidden" name="aba_minha_conta" value="editar-imoveis">
+                                    <input type="hidden" name="menu_minha_conta" value="editar-imoveis">
                                     <button type="submit" class="btn btn-success rounded">
                                         <i class="fas fa-pencil"></i>
                                     </button>

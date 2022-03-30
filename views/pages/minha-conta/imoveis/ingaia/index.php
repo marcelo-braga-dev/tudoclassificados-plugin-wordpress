@@ -48,7 +48,7 @@
                                        value="<?= $_GET['apikey_ingaia'] ?>" required>
                             </div>
                             <div class="form-group col-md-auto">
-                                <input type="hidden" name="aba_minha_conta" value="imoveis-integrar-ingaia">
+                                <input type="hidden" name="menu_minha_conta" value="imoveis-integrar-ingaia">
                                 <input type="hidden" name="imoveis_ingaia" value="true">
                                 <button type="submit" id="btn-integrar-ingaia"
                                         class="btn btn-primary btn-block rounded">Buscar

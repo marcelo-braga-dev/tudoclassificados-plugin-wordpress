@@ -20,7 +20,7 @@ class Bling
             $this->produtos = $clsBling->getProdutos($_GET['token_bling']);
         }
 
-        session('aba_minha_conta', 'marketplace-integrar-bling');
+        set_menu_minha_conta('marketplace-integrar-bling');
         return $this->produtos;
     }
 
@@ -37,7 +37,7 @@ class Bling
                 $clsBling->cadastrar($this->produtos);
             }
 
-            session('aba_minha_conta', $tipo);
+            set_menu_minha_conta($tipo);
             wp_redirect('/minha-conta');
             exit();
         }

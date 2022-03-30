@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-12  mb-2">
                             <input type="hidden" name="classificados-bling" value="true">
-                            <input type="hidden" name="aba_menu" value="classificados-integrar-bling">
+                            <input type="hidden" name="menu_minha_conta" value="classificados-integrar-bling">
                             <button type="submit" class="btn btn-primary rounded">Pesquisar</button>
                         </div>
                     </div>

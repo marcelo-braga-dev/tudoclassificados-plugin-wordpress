@@ -46,8 +46,9 @@ class MinhaConta
         $anunciosImoveisAtivo = get_qtd_anuncios_imoveis_usuario($userId);
         $limitesImovel = tc_limit_imoveis_usuario($limiteAnunciosPremium['imoveis'], $anunciosImoveisAtivo);
 
-        $abaMenu = get_session('aba_minha_conta') ?? $_GET['aba_minha_conta'];
+        //$abaMenu = get_session('aba_minha_conta') ?? $_GET['aba_minha_conta'];
 
         require_once TUDOCLASSIFICADOS_PATH_VIEW . 'pages/minha-conta/minha-conta.php';
+        set_menu_minha_conta('destroy');
     }
 }

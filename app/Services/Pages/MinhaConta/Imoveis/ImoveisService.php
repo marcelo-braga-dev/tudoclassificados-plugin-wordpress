@@ -9,7 +9,7 @@ class ImoveisService
     public function index()
     {
         if (!empty($_GET['apikey_ingaia'])) {
-            session('aba_minha_conta', 'imoveis-integrar-ingaia');
+            set_menu_minha_conta('imoveis-integrar-ingaia');
 
             $ingaia = new Ingaia();
             $imoveis = $ingaia->getImoveis();
@@ -24,7 +24,7 @@ class ImoveisService
     {
         $ingaia->cadastrar($imoveis);
 
-        session('aba_minha_conta', 'imoveis');
+        set_menu_minha_conta('imoveis');
         wp_redirect('/minha-conta');
         exit();
     }
