@@ -13,19 +13,6 @@ class MercadoPago
         $this->table = 'class_tc_dados_checkout';
     }
 
-    public function create()
-    {
-        $post = get_post($_GET['id']);
-        $post_meta = get_post_meta($_GET['id']);
-
-        if ($post->post_type != 'acadp_listings' || $post->post_status != 'publish') return;
-
-        $valorTotal = tc_converter_money_float($post_meta['price'][0]) + tc_converter_money_float($_GET['frete_valor']);
-        $valorTotal = tc_converter_float_money($valorTotal);
-
-        include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/marketplace/checkout/create.php';
-    }
-
     public function store()
     {
         global $wpdb;
@@ -43,30 +30,21 @@ class MercadoPago
             'cidade_entrega' => $_POST['cidade'],
             'estado_entrega' => $_POST['estado'],
         ]);
-
-        $this->show($wpdb->insert_id);
+        return $wpdb->insert_id;
     }
 
-    public function show($id)
+    public function checkout($post, $postMeta)
     {
         global $wpdb;
+        $table = new \TudoClassificados\App\src\Integracoes\MercadoPago\Dados();
+        $id = get_current_user_id();
 
-        $post = get_post($_GET['id']);
-        $post_meta = get_post_meta($_GET['id']);
+        $res = $wpdb->get_row("SELECT * FROM `{$table->table}` WHERE `user` = $id");
 
-        $preference = $this->checkout($post, $post_meta);
-
-        $dados = $wpdb->get_row("SELECT * FROM `{$this->table}` WHERE `id` = '$id'");
-
-        include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/marketplace/checkout/show.php';
-    }
-
-    private function checkout($post, $postMeta)
-    {
-        \MercadoPago\SDK::setAccessToken('TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382');
-
+        \MercadoPago\SDK::setAccessToken($res->access_token);
+        //TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382
         $preco = $postMeta['price'][0];
-        $preco = 10;
+        $preco = 100;
 
         $preference = new \MercadoPago\Preference();
 
@@ -89,7 +67,7 @@ class MercadoPago
 
         $preference->items = array($item);
         $preference->payer = $payer;
-        $preference->marketplace_fee = 2.5;
+        $preference->marketplace_fee = 5;
         $preference->notification_url = "https://www.tudoclassificados.com/integracoes/mercadopago/webhooks";
 
         $preference->save();
@@ -98,5 +76,10 @@ class MercadoPago
             'id' => $preference->id,
             'publicKey' => 'TEST-cd0ff363-ce23-46cd-92ac-591e416c5c55'
         ];
+    }
+
+    public function getTable()
+    {
+        return $this->table;
     }
 }

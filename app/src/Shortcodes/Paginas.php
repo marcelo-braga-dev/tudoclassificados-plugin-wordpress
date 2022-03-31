@@ -36,14 +36,17 @@ class Paginas
 
         if ($atts['pagina'] == 'checkout-marketplace-mercadopago') {
             if ($atts['tipo'] == 'create') {
-                $pagina = new MercadoPago();
+                $pagina = new \TudoClassificados\App\Views\Pages\Marketplace\Checkouts\MercadoPago();
 
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $pagina->create();
                 }
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $pagina->store();
+                    $checkout = new \TudoClassificados\App\src\Marketplace\Checkouts\MercadoPago();
+                    $id = $checkout->store();
+
+                    $pagina->show($id);
                 }
             }
         }

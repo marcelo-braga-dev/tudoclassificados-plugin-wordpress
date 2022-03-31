@@ -78,7 +78,11 @@
                 </div>
                 <div class="row">
                     <div class="col-auto mx-auto">
-                        <div class="cho-container mb-3"></div>
+                        <?php if (empty($preference['id'])) : ?>
+                        <span class="text-danger">Vendedor sem conta de recebimento registrada.</span>
+                        <?php else: ?>
+                            <div class="cho-container mb-3"></div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
