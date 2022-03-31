@@ -72,7 +72,7 @@
                 <div class="row mb-3">
                     <div class="col-12">
                         <label>
-                            <input type="checkbox"> Confirmo dados do comprador e de enrtrega.
+                            <input type="checkbox"> Confirmo os dados do comprador e o endereço de enrtrega.
                         </label>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     <div class="col-7 col-md-8 pt-3">
                         <small class="d-block">Preço: R$ <?= acadp_format_amount($post_meta['price'][0]) ?></small>
                         <small class="d-block mb-2">Frete: R$ <?= $_GET['frete_valor'] ?></small>
-                        <span>Total: <b>R$ <?= $valorTotal ?></b></span>
+<!--                        <span>Total: <b>R$ --><?//= $valorTotal ?><!--</b></span>-->
                     </div>
                 </div>
             </div>

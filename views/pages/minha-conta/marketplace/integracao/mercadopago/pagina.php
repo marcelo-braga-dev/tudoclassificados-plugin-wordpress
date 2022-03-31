@@ -31,7 +31,7 @@
                                         <td><?= $item->user_id ?></td>
                                         <td><?= date('d/m/Y H:i:s', strtotime($item->created_at)) ?></td>
                                         <td><?= date('d/m/Y H:i:s', strtotime($item->created_at) + $item->expires_in) ?></td>
-                                        <td><span class="text-danger">Remover</span></td>
+                                        <td></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
