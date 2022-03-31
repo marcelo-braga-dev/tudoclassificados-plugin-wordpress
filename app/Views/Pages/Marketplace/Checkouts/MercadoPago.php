@@ -25,7 +25,7 @@ class MercadoPago
         $post_meta = get_post_meta($_GET['id']);
 
         $checkout = new \TudoClassificados\App\src\Marketplace\Checkouts\MercadoPago();
-        $preference = $checkout->checkout($post->post_title, $post_meta['price'][0]);
+        $preference = $checkout->checkout($post->post_title, $post_meta['price'][0], $post->post_author);
 
         $dados = $wpdb->get_row("SELECT * FROM `{$checkout->getTable()}` WHERE `id` = '$id'");
 

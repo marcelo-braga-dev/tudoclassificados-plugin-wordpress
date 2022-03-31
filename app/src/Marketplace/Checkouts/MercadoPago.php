@@ -33,22 +33,19 @@ class MercadoPago
         return $wpdb->insert_id;
     }
 
-    public function checkout($post, $postMeta)
+    public function checkout($titulo, $preco, $idVendedor)
     {
         global $wpdb;
         $table = new \TudoClassificados\App\src\Integracoes\MercadoPago\Dados();
-        $id = get_current_user_id();
 
-        $res = $wpdb->get_row("SELECT * FROM `{$table->table}` WHERE `user` = $id");
+        $res = $wpdb->get_row("SELECT * FROM `{$table->table}` WHERE `user` = $idVendedor");
 
-        \MercadoPago\SDK::setAccessToken($res->access_token);
-        //TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382
-        $preco = $postMeta['price'][0];
+        \MercadoPago\SDK::setAccessToken($res->access_token); //TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382
 
         $preference = new \MercadoPago\Preference();
 
         $item = new \MercadoPago\Item();
-        $item->title = esc_html($post->post_title);
+        $item->title = esc_html($titulo);
         $item->quantity = 1;
         $item->currency_id = "BRL";
         $item->unit_price = $preco;
