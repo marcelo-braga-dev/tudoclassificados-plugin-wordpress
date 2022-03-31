@@ -44,7 +44,6 @@ class MercadoPago
         \MercadoPago\SDK::setAccessToken($res->access_token);
         //TEST-463057725192964-032913-cef7b8e423444949671ba0e259a15376-465347382
         $preco = $postMeta['price'][0];
-        $preco = 100;
 
         $preference = new \MercadoPago\Preference();
 

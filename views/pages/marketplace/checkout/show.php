@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="col-auto mx-auto">
                         <?php if (empty($preference['id'])) : ?>
-                        <span class="text-danger">Vendedor sem conta de recebimento registrada.</span>
+                        <span class="text-danger">O Vendedor ainda não cadastrou uma conta para recebimento.</span>
                         <?php else: ?>
                             <div class="cho-container mb-3"></div>
                         <?php endif; ?>
