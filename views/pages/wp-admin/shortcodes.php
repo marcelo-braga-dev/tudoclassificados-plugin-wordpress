@@ -14,5 +14,8 @@
 
         <h5>Integracao</h5>
         <span>Redirect URL: [tc_paginas pagina='redirect-url-mercadopago']</span>
+
+        <h5>Pacotes Premium</h5>
+        <span>Pagina de Preços: [tc_paginas pagina="pacotes-premium"]</span>
     </div>
 </div>

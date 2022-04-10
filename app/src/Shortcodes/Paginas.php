@@ -3,9 +3,9 @@
 namespace TudoClassificados\App\src\Shortcodes;
 
 use TudoClassificados\App\src\Integracoes\MercadoPago\Autorizacao;
-use TudoClassificados\App\src\Marketplace\Checkouts\MercadoPago;
 use TudoClassificados\App\src\Shortcodes\Anuncios\NovoAnuncio;
 use TudoClassificados\App\Views\Pages\Classificados\Anuncios\Index;
+use TudoClassificados\App\Views\Pages\ContasPremium\Pacotes;
 use TudoClassificados\App\Views\Pages\MinhaConta\MinhaConta;
 
 class Paginas
@@ -54,6 +54,13 @@ class Paginas
         if ($atts['pagina'] == 'redirect-url-mercadopago') {
             $pagina = new Autorizacao();
             $pagina->retorno();
+        }
+
+        if ($atts['pagina'] == 'pacotes-premium') {
+            $pagina = new Pacotes();
+            $preference = $pagina->execute();
+
+            include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/pacotes/index.php';
         }
     }
 }
