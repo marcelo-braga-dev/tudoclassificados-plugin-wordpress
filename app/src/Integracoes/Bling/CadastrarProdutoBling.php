@@ -37,7 +37,7 @@ class CadastrarProdutoBling extends CadastrarProdutos
                     $idImagens = $this->imagens($produto->imagem);
 
                     $dados = new DadosAnuncio();
-                    $dados->preco = number_format($produto->preco, 2, '.', '');
+                    $dados->preco = $infoSelecionados[$produto->id]['preco'];
                     $dados->origem = 'bling';
                     $dados->tipo = $this->tipo;
                     $dados->produto = $produto;

@@ -14,8 +14,11 @@
 
         <h5>Integracao</h5>
         <span>Redirect URL: [tc_paginas pagina='redirect-url-mercadopago']</span>
+        <hr class="mb-3">
 
         <h5>Pacotes Premium</h5>
         <span>Pagina de Preços: [tc_paginas pagina="pacotes-premium"]</span>
+        <br>pct-classi-1, pct-classi-2
+        <br>pct-imoveis-1, pct-imoveis-2
     </div>
 </div>

@@ -53,13 +53,13 @@ function cadastrarCep(): void
     ?>
     <form method="post">
         <div class="row justify-content-center align-items-end py-3">
-            <div class="col-8 col-md-2">
+            <div class="col-8 col-md-3">
                 <label for="cep">Insira seu cep:</label>
                 <input type="text" class="form-control" id="cep" name="cep" data-mask="00000-000"
                        minlength="9" required>
             </div>
             <div class="col-4 col-md-2">
-                <button type="submit" class="text-white rounded btn-sm py-1">Salvar</button>
+                <button type="submit" class="btn btn-primary rounded">Salvar</button>
             </div>
         </div>
     </form>

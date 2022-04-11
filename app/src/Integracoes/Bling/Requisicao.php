@@ -7,7 +7,7 @@ class Requisicao
     public function getProdutos($apiKey): array
     {
         $erro = '';
-        $num_page = $_GET['page_bling'];
+        $num_page = $_GET['page_index'];
         if (!$num_page) $num_page = 1;
 
         $url = 'https://bling.com.br/Api/v2/produtos/page=' . $num_page . '/json';
