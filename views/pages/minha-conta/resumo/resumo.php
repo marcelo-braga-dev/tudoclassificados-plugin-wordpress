@@ -1,7 +1,9 @@
 <?php
 $current_user = wp_get_current_user();
+$user_id = get_current_user_id();
 
 if (!empty($_POST['form-contato'])) {
+
     update_user_meta($user_id, 'email_contato', $_POST['email_contato']);
     update_user_meta($user_id, 'celular', $_POST['celular_contato']);
     update_user_meta($user_id, 'facebook', $_POST['facebook']);
@@ -32,7 +34,7 @@ if (!empty($_POST['form-contato'])) {
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="email_contato">Seu email para contato:</label>
-                                <input type="email" class="form-control" name="email_contato" id="email_contato" value="<?= $current_user->user_email ?>">
+                                <input type="email" class="form-control" name="email_contato" id="email_contato" value="<?= get_user_meta($user_id, 'email_contato')[0]?>">
                             </div>
                         </div>
                     </div>
