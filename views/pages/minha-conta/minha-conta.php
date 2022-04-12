@@ -84,8 +84,8 @@
                         <span class="ml-2">Marketplace</span>
                     </a>
                     <div class="collapse <?= get_menu_minha_conta('marketplace') ||
-                            get_menu_minha_conta('marketplace-integrar-bling') ||
-                            get_menu_minha_conta('marketplace-integrar-mercadopago') ? 'show' : '' ?>"
+                    get_menu_minha_conta('marketplace-integrar-bling') ||
+                    get_menu_minha_conta('marketplace-integrar-mercadopago') ? 'show' : '' ?>"
                          id="navbar-marketplace">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
@@ -260,12 +260,11 @@
         </div>
 
         <div class="col-md-10">
-            <!-- Painel de abas -->
+            <!-- INIT -->
             <div class="tab-content">
                 <!-- Resumo -->
                 <div class="tab-pane fade <?php if (empty(get_menu_minha_conta())) echo 'active show' ?>"
-                     id="resumo"
-                     role="tabpanel">
+                     id="resumo" role="tabpanel">
                     <?php include 'resumo/resumo.php' ?>
                 </div>
 
@@ -338,6 +337,7 @@
                     <?php include 'perfil/editar-perfil.php' ?>
                 </div>
             </div>
+            <!-- END -->
         </div>
     </div>
 </div>
@@ -393,14 +393,14 @@
 <?php
 function bs4t_nav_minha_conta()
 {
-    wp_enqueue_script('minha-conta-1', plugin_dir_url(__FILE__) . 'assets/js/main.js', [], false, true);
+    //wp_enqueue_script('minha-conta-1', plugin_dir_url(__FILE__) . 'assets/js/main.js', [], false, true);
     ?>
     <script src="<?= plugin_dir_url(__FILE__) . 'assets/js/main.js' ?>"></script>
     <script>
         $(function () {
             $('.nav-lvl-1').click(function () {
-                $('.nav-lvl-1').parent().parent().find('.show').toggleClass('show', 5000);
                 $('.nav-lvl-2').removeClass('active');
+                $('.nav-lvl-1').parent().parent().find('.show').toggleClass('show', 5000);
             });
         });
     </script>
