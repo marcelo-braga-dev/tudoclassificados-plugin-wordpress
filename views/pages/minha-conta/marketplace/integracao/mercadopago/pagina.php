@@ -29,8 +29,8 @@
                                 <?php foreach ($contasIntegradasMercadoPago as $item) : ?>
                                     <tr>
                                         <td><?= $item->user_id ?></td>
-                                        <td><?= date('d/m/Y H:i:s') ?></td>
-                                        <td><?= date('d/m/Y H:i:s', time() + $item->expires_in) ?></td>
+                                        <td><?= date('d/m/Y') ?></td>
+                                        <td><?= date('d/m/Y', time() + $item->expires_in) ?></td>
                                         <td></td>
                                     </tr>
                                 <?php endforeach; ?>
