@@ -178,7 +178,7 @@ class ACADP_Public_User
     public function run_shortcode_user_listings($atts)
     {
         $anuncios = new AnunciosUsuario();
-        $anuncios->execute($atts);
+        return $anuncios->execute($atts);
     }
 
     /**

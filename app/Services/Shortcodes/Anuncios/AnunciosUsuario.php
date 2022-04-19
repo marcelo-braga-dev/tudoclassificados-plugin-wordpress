@@ -1,6 +1,8 @@
 <?php
 
 namespace TudoClassificados\App\Services\Shortcodes\Anuncios;
+use WP_Query;
+
 class AnunciosUsuario
 {
     public function execute($atts)
@@ -281,7 +283,7 @@ class AnunciosUsuario
             // Process output
             if ($acadp_query->have_posts()) {
                 ob_start();
-                include(acadp_get_template("listings/acadp-public-listings-$view-display.php"));
+                include TUDOCLASSIFICADOS_PATH_VIEW . 'pages/classificados/index/pagina.php';
                 return ob_get_clean();
             } else {
                 return '<span>' . __('No Results Found.', 'advanced-classifieds-and-directory-pro') . '</span>';
